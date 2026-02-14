@@ -10,7 +10,7 @@ body {
   color: #12131a;
 }
 
-/* ===== Header principal ===== */
+/* Header principal */
 body > header {
   padding: 18px 18px 12px;
 }
@@ -39,12 +39,12 @@ body > header p {
   color: #4b4c59;
 }
 
-/* ===== Main ===== */
+/* Main */
 main {
   padding: 18px;
 }
 
-/* Título y descripción de la sección principal */
+/* tittulo y descripcion de la seccion principal */
 main > section > h2 {
   margin: 0;
   font-size: 22px;
@@ -56,7 +56,7 @@ main > section > p {
   color: #4b4c59;
 }
 
-/* Navegaciones (chips) */
+/* Navegaciones */
 main nav {
   margin: 14px 0 10px;
 }
@@ -82,12 +82,11 @@ main nav a {
   font-size: 14px;
 }
 
-/* ===== Bloque de búsqueda y filtros ===== */
+/* Bloque de busqueda y filtros  */
 main > section > section {
   margin-top: 12px;
 }
 
-/* Solo el primer section dentro del main->section será el bloque de búsqueda */
 main > section > section:first-of-type form {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -128,8 +127,7 @@ main > section > section:first-of-type nav {
   margin-top: 12px;
 }
 
-/* ===== Lista de actividades (grid) ===== */
-/* El último section dentro de main->section será el de actividades */
+/*  Lista de actividades  grid */
 main > section > section:last-of-type {
   margin-top: 16px;
   display: grid;
@@ -147,7 +145,7 @@ main article {
   display: grid;
 }
 
-/* Contenido del artículo */
+/* Contenido del articulo */
 main article > * {
   padding-left: 14px;
   padding-right: 14px;
@@ -194,7 +192,6 @@ main article figcaption {
   background: #fbfaff;
 }
 
-/* Botón "Únete" (último párrafo del artículo) */
 main article p:last-of-type {
   margin-top: 14px;
   padding: 14px;
@@ -212,7 +209,7 @@ main article p:last-of-type a {
   letter-spacing: 0.01em;
 }
 
-/* ===== Footer del sitio ===== */
+/* Footer del sitio  */
 body > footer {
   margin-top: 26px;
   padding: 26px 18px 34px;
