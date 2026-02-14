@@ -1,226 +1,218 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parcha2</title>
-    <link rel="stylesheet" href="./Styles/Styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parcha2</title>
+  <link rel="stylesheet" href="./Styles/Styles.css">
 </head>
+
 <body>
-    <header>
-        <figure>
-            <img src="./Styles/imagenes/logoparcha2.png" alt="logoparcha2">
-        </figure>
-        <h1>Parcha2</h1>
-        <h2>Conecta, crea, comparte</h2>
-    </header>
+  <header>
+    <figure>
+      <img src="./Styles/imagenes/logoparcha2.png" alt="Logo de Parcha2">
+    </figure>
+    <h1>Parcha2</h1>
+    <p>Conecta, crea, comparte</p>
+  </header>
 
-    <main>
-        <section>
-            <header>
-                <h3>Descubre parches</h3>
-                <p>Únete a actividades increíbles y conoce gente con tus mismos intereses</p>
-            </header>
+  <main>
+    <section aria-labelledby="titulo-descubre">
+      <h2 id="titulo-descubre">Descubre parches</h2>
+      <p>Únete a actividades increíbles y conoce gente con tus mismos intereses</p>
 
-            <nav aria-label="Navegación de secciones">
-                <ul>
-                    <li><a href="#">Explorar</a></li>
-                    <li><a href="#">Crear</a></li>
-                    <li><a href="#">Mis Parches</a></li>
-                </ul>
-            </nav>
+      <nav aria-label="Secciones principales">
+        <ul>
+          <li><a href="#">Explorar</a></li>
+          <li><a href="#">Crear</a></li>
+          <li><a href="#">Mis Parches</a></li>
+        </ul>
+      </nav>
 
-            <section aria-label="Búsqueda y filtros">
-                <form action="#" method="get">
-                    <label for="buscar">Buscar parches</label>
-                    <input id="buscar" name="q" type="search" placeholder="Buscar parches..." autocomplete="off">
-                    <button type="submit">Buscar</button>
-                </form>
+      <section aria-label="Búsqueda y filtros">
+        <form action="#" method="get">
+          <label for="buscar">Buscar parches</label>
+          <input id="buscar" name="q" type="search" placeholder="Buscar parches..." autocomplete="off">
+          <button type="submit">Buscar</button>
+        </form>
 
-                <nav aria-label="Filtros de categoría">
-                    <ul>
-                        <li><a href="#">Todas</a></li>
-                        <li><a href="#">Deportes</a></li>
-                        <li><a href="#">Social</a></li>
-                        <li><a href="#">Cultura</a></li>
-                        <li><a href="#">Voluntariado</a></li>
-                    </ul>
-                </nav>
-            </section>
+        <nav aria-label="Categorías">
+          <ul>
+            <li><a href="#">Todas</a></li>
+            <li><a href="#">Deportes</a></li>
+            <li><a href="#">Social</a></li>
+            <li><a href="#">Cultura</a></li>
+            <li><a href="#">Voluntariado</a></li>
+          </ul>
+        </nav>
+      </section>
 
-            <section aria-label="Actividades disponibles">
-                <article>
-                    <header>
-                        <h6>Deportes</h6>
-                        <h4>Fútbol 5 en el parque</h4>
-                        <p>¡Vamos a jugar un partidito! Buscamos jugadores para completar el equipo. Todos los niveles bienvenidos.</p>
-                    </header>
+      <section aria-label="Actividades disponibles">
+        <article aria-label="Actividad: Fútbol 5 en el parque">
+          <h3>Fútbol 5 en el parque</h3>
+          <p><strong>Categoría:</strong> Deportes</p>
+          <p>¡Vamos a jugar un partidito! Buscamos jugadores para completar el equipo. Todos los niveles bienvenidos.</p>
 
-                    <figure>
-                        <img src="./Styles/imagenes/jugandofutparque.jpeg" alt="Personas jugando fútbol en un parque">
-                        <figcaption>Partido amistoso al aire libre.</figcaption>
-                    </figure>
+          <figure>
+            <img src="./Styles/imagenes/jugandofutparque.jpeg" alt="Personas jugando fútbol en un parque">
+            <figcaption>Partido amistoso al aire libre.</figcaption>
+          </figure>
 
-                    <address>Alicante Futbol Indoor</address>
+          <p><strong>Lugar:</strong> Alicante Futbol Indoor</p>
 
-                    <p>
-                        <time datetime="2025-10-05">Sábado 5 Oct</time>
-                        ·
-                        <time datetime="2025-10-05T16:00">4:00 PM</time>
-                        –
-                        <time datetime="2025-10-05T18:00">6:00 PM</time>
-                    </p>
+          <p>
+            <strong>Fecha:</strong>
+            <time datetime="2025-10-05">Sábado 5 Oct</time>
+          </p>
 
-                    <p>7/10 parcherxs</p>
-                    <p><strong>Organizado por:</strong> Carlos M.</p>
+          <p>
+            <strong>Hora:</strong>
+            <time datetime="2025-10-05T16:00">16:00</time> -
+            <time datetime="2025-10-05T18:00">18:00</time>
+          </p>
 
-                    <footer>
-                        <a href="#">¡Únete al parche!</a>
-                    </footer>
-                </article>
+          <p><strong>Cupos:</strong> 7/10 parcherxs</p>
+          <p><strong>Organizado por:</strong> Carlos M.</p>
 
-                <article>
-                    <header>
-                        <h6>Social</h6>
-                        <h4>Café y charla</h4>
-                        <p>Reunión casual para conocer gente nueva y tomar un café. ¡Ambiente relajado y buenas conversaciones!</p>
-                    </header>
+          <p><a href="#">¡Únete al parche!</a></p>
+        </article>
 
-                    <figure>
-                        <img src="./Styles/imagenes/dos-personas-de-negocios-hablando-mientras-estan-sentados-en-la-cafeteria-de-la-oficina-mujer-de-negocios-con-un-hombre-sentado-al-aire-libre-en-una-mesa-discutiendo-el-trabajo-JLPSF24850.jpg" alt="Dos personas conversando en una cafetería">
-                        <figcaption>Una tarde tranquila para socializar.</figcaption>
-                    </figure>
+        <article aria-label="Actividad: Café y charla">
+          <h3>Café y charla</h3>
+          <p><strong>Categoría:</strong> Social</p>
+          <p>Reunión casual para conocer gente nueva y tomar un café. ¡Ambiente relajado y buenas conversaciones!</p>
 
-                    <address>Cafetería Tres Texturas</address>
+          <figure>
+            <img src="./Styles/imagenes/dos-personas-de-negocios-hablando-mientras-estan-sentados-en-la-cafeteria-de-la-oficina-mujer-de-negocios-con-un-hombre-sentado-al-aire-libre-en-una-mesa-discutiendo-el-trabajo-JLPSF24850.jpg" alt="Dos personas conversando en una cafetería">
+            <figcaption>Una tarde tranquila para socializar.</figcaption>
+          </figure>
 
-                    <p>
-                        <time datetime="2025-10-04">Viernes 4 Oct</time>
-                        
-                        <time datetime="2025-10-04T18:00">6:00 PM</time>
-                        
-                        <time datetime="2025-10-04T20:00">8:00 PM</time>
-                    </p>
+          <p><strong>Lugar:</strong> Cafetería Tres Texturas</p>
 
-                    <p>4/8 parcherxs</p>
-                    <p><strong>Organizado por:</strong> Ana L.</p>
+          <p>
+            <strong>Fecha:</strong>
+            <time datetime="2025-10-04">Viernes 4 Oct</time>
+          </p>
 
-                    <footer>
-                        <a href="#">¡Únete al parche!</a>
-                    </footer>
-                </article>
+          <p>
+            <strong>Hora:</strong>
+            <time datetime="2025-10-04T18:00">18:00</time> -
+            <time datetime="2025-10-04T20:00">20:00</time>
+          </p>
 
-                <article>
-                    <header>
-                        <h6>Deportes</h6>
-                        <h4>Senderismo El Tablazo</h4>
-                        <p>Caminata de nivel medio por El Tablazo. Conecta con la naturaleza y conoce nuevos amigos aventureros.</p>
-                    </header>
+          <p><strong>Cupos:</strong> 4/8 parcherxs</p>
+          <p><strong>Organizado por:</strong> Ana L.</p>
 
-                    <figure>
-                        <img src="./Styles/imagenes/castilloSB.jpg" alt="Paisaje de montaña con neblina">
-                        <figcaption>Ruta de caminata para castillo</figcaption>
-                    </figure>
+          <p><a href="#">¡Únete al parche!</a></p>
+        </article>
 
-                    <address>Alicante - Castillo de Santa Barbara</address>
+        <article aria-label="Actividad: Senderismo El Tablazo">
+          <h3>Senderismo El Tablazo</h3>
+          <p><strong>Categoría:</strong> Deportes</p>
+          <p>Caminata de nivel medio por El Tablazo. Conecta con la naturaleza y conoce nuevos amigos aventureros.</p>
 
-                    <p>
-                        <time datetime="2025-10-06">Domingo 6 Oct</time>
-                        ·
-                        <time datetime="2025-10-06T06:00">6:00 AM</time>
-                        
-                        <time datetime="2025-10-06T14:00">2:00 PM</time>
-                    </p>
+          <figure>
+            <img src="./Styles/imagenes/castilloSB.jpg" alt="Paisaje de montaña con neblina">
+            <figcaption>Ruta de caminata para castillo.</figcaption>
+          </figure>
 
-                    <p>8/15 parcherxs</p>
-                    <p><strong>Organizado por:</strong> Diego R.</p>
+          <p><strong>Lugar:</strong> Alicante - Castillo de Santa Barbara</p>
 
-                    <footer>
-                        <a href="#">¡Únete al parche!</a>
-                    </footer>
-                </article>
+          <p>
+            <strong>Fecha:</strong>
+            <time datetime="2025-10-06">Domingo 6 Oct</time>
+          </p>
 
-                <article>
-                    <header>
-                        <h6>Voluntariado</h6>
-                        <h4>Voluntariado en refugio de animales</h4>
-                        <p>Ayuda a cuidar y pasear perritos rescatados. ¡Tu tiempo puede hacer una gran diferencia!</p>
-                    </header>
+          <p>
+            <strong>Hora:</strong>
+            <time datetime="2025-10-06T06:00">06:00</time> -
+            <time datetime="2025-10-06T14:00">14:00</time>
+          </p>
 
-                    <figure>
-                        <img src="./Styles/imagenes/voluntariado.jpeg" alt="Persona acariciando un perro en un refugio">
-                        <figcaption>Acompañamiento y cuidado básico.</figcaption>
-                    </figure>
+          <p><strong>Cupos:</strong> 8/15 parcherxs</p>
+          <p><strong>Organizado por:</strong> Diego R.</p>
 
-                    <address>Camino Viejo de Elche, km7 Alicante</address>
+          <p><a href="#">¡Únete al parche!</a></p>
+        </article>
 
-                    <p>
-                        <time datetime="2025-10-06">Domingo 6 Oct</time>
-                        ·
-                        <time datetime="2025-10-06T09:00">9:00 AM</time>
-                        
-                        <time datetime="2025-10-06T13:00">1:00 PM</time>
-                    </p>
+        <article aria-label="Actividad: Voluntariado en refugio de animales">
+          <h3>Voluntariado en refugio de animales</h3>
+          <p><strong>Categoría:</strong> Voluntariado</p>
+          <p>Ayuda a cuidar y pasear perritos rescatados. ¡Tu tiempo puede hacer una gran diferencia!</p>
 
-                    <p>12/20 parcherxs</p>
-                    <p><strong>Organizado por:</strong> Sofía C.</p>
+          <figure>
+            <img src="./Styles/imagenes/voluntariado.jpeg" alt="Persona acariciando un perro en un refugio">
+            <figcaption>Acompañamiento y cuidado básico.</figcaption>
+          </figure>
 
-                    <footer>
-                        <a href="#">¡Únete al parche!</a>
-                    </footer>
-                </article>
+          <p><strong>Lugar:</strong> Camino Viejo de Elche, km7 Alicante</p>
 
-                <article>
-                    <header>
-                        <h6>Deportes</h6>
-                        <h4>Ciclopaseo nocturno</h4>
-                        <p>Recorrido en bici por la ciudad iluminada. Trae tu casco y buena energía. ¡Rutas seguras!</p>
-                    </header>
+          <p>
+            <strong>Fecha:</strong>
+            <time datetime="2025-10-06">Domingo 6 Oct</time>
+          </p>
 
-                    <figure>
-                        <img src="./Styles/imagenes/bicialicant.jpg" alt="Grupo de ciclistas de noche en la ciudad">
-                        <figcaption>Rodada en grupo con acompañamiento.</figcaption>
-                    </figure>
+          <p>
+            <strong>Hora:</strong>
+            <time datetime="2025-10-06T09:00">09:00</time> -
+            <time datetime="2025-10-06T13:00">13:00</time>
+          </p>
 
-                    <address>Explanada de Alicante</address>
+          <p><strong>Cupos:</strong> 12/20 parcherxs</p>
+          <p><strong>Organizado por:</strong> Sofía C.</p>
 
-                    <p>
-                        <time datetime="2025-10-04">Viernes 4 Oct</time>
-                        
-                        <time datetime="2025-10-04T19:30">7:30 PM</time>
-                    
-                        <time datetime="2025-10-04T22:00">10:00 PM</time>
-                    </p>
+          <p><a href="#">¡Únete al parche!</a></p>
+        </article>
 
-                    <p>18/25 parcherxs</p>
-                    <p><strong>Organizado por:</strong> Julián V.</p>
+        <article aria-label="Actividad: Ciclopaseo nocturno">
+          <h3>Ciclopaseo nocturno</h3>
+          <p><strong>Categoría:</strong> Deportes</p>
+          <p>Recorrido en bici por la ciudad iluminada. Trae tu casco y buena energía. ¡Rutas seguras!</p>
 
-                    <footer>
-                        <a href="#">¡Únete al parche!</a>
-                    </footer>
-                </article>
-            </section>
-        </section>
-    </main>
+          <figure>
+            <img src="./Styles/imagenes/bicialicant.jpg" alt="Grupo de ciclistas de noche en la ciudad">
+            <figcaption>Rodada en grupo con acompañamiento.</figcaption>
+          </figure>
 
-    <footer>
-        <section aria-label="Información del sitio">
-            <header>
-                <h3>Parcha2</h3>
-                <p>Conectando personas a través de experiencias compartidas</p>
-            </header>
+          <p><strong>Lugar:</strong> Explanada de Alicante</p>
 
-            <nav aria-label="Enlaces del pie de página">
-                <ul>
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Comunidad</a></li>
-                    <li><a href="#">Ayuda</a></li>
-                </ul>
-            </nav>
+          <p>
+            <strong>Fecha:</strong>
+            <time datetime="2025-10-04">Viernes 4 Oct</time>
+          </p>
 
-            <p>
-                <time datetime="2026">2026</time> · Hecho con ❤️ para la comunidad
-            </p>
-        </section>
-    </footer>
+          <p>
+            <strong>Hora:</strong>
+            <time datetime="2025-10-04T19:30">19:30</time> -
+            <time datetime="2025-10-04T22:00">22:00</time>
+          </p>
+
+          <p><strong>Cupos:</strong> 18/25 parcherxs</p>
+          <p><strong>Organizado por:</strong> Julián V.</p>
+
+          <p><a href="#">¡Únete al parche!</a></p>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <section aria-labelledby="titulo-footer">
+      <h2 id="titulo-footer">Parcha2</h2>
+      <p>Conectando personas a través de experiencias compartidas</p>
+
+      <nav aria-label="Enlaces del pie de página">
+        <ul>
+          <li><a href="#">Sobre nosotros</a></li>
+          <li><a href="#">Comunidad</a></li>
+          <li><a href="#">Ayuda</a></li>
+        </ul>
+      </nav>
+
+      <p>
+        <time datetime="2026">2026</time> · Hecho con ❤️ para la comunidad
+      </p>
+    </section>
+  </footer>
 </body>
 </html>

@@ -1,289 +1,262 @@
-:root{
-    color-scheme: light;
+:root {
+  color-scheme: light;
 }
 
-body{
-    margin: 0;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    line-height: 1.45;
-    background: linear-gradient(180deg, #ffffff 0%, #f6f4ff 60%, #ffffff 100%);
-    color: #12131a;
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.45;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f4ff 60%, #ffffff 100%);
+  color: #12131a;
 }
 
-header{
-    padding: 18px 18px 12px;
+/* ===== Header principal ===== */
+body > header {
+  padding: 18px 18px 12px;
 }
 
-header figure{
-    margin: 0;
+body > header figure {
+  margin: 0;
 }
 
-header img{
-    width: 56px;
-    height: 56px;
-    object-fit: contain;
-    display: block;
+body > header img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
 }
 
-header h1{
-    margin: 10px 0 0;
-    font-size: 28px;
-    letter-spacing: -0.02em;
+body > header h1 {
+  margin: 10px 0 0;
+  font-size: 28px;
+  letter-spacing: -0.02em;
 }
 
-header h2{
-    margin: 4px 0 0;
-    font-size: 14px;
-    font-weight: 600;
-    color: #4b4c59;
+body > header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b4c59;
 }
 
-main{
-    padding: 18px;
+/* ===== Main ===== */
+main {
+  padding: 18px;
 }
 
-main > section > header{
-    padding: 0 0 10px;
+/* Título y descripción de la sección principal */
+main > section > h2 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: -0.01em;
 }
 
-main > section > header h3{
-    margin: 0;
-    font-size: 22px;
-    letter-spacing: -0.01em;
+main > section > p {
+  margin: 6px 0 0;
+  color: #4b4c59;
 }
 
-main > section > header p{
-    margin: 6px 0 0;
-    color: #4b4c59;
+/* Navegaciones (chips) */
+main nav {
+  margin: 14px 0 10px;
 }
 
-main nav{
-    margin: 14px 0 10px;
+main nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-main nav ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+main nav a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #f0edff;
+  color: #2c1f7a;
+  border: 1px solid #ded8ff;
+  font-weight: 700;
+  font-size: 14px;
 }
 
-main nav a{
-    display: inline-block;
-    text-decoration: none;
-    padding: 10px 14px;
-    border-radius: 999px;
-    background: #f0edff;
-    color: #2c1f7a;
-    border: 1px solid #ded8ff;
-    font-weight: 700;
-    font-size: 14px;
+/* ===== Bloque de búsqueda y filtros ===== */
+main > section > section {
+  margin-top: 12px;
 }
 
-main section section{
-    margin-top: 12px;
+/* Solo el primer section dentro del main->section será el bloque de búsqueda */
+main > section > section:first-of-type form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: end;
+  padding: 12px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e7e3ff;
+  box-shadow: 0 10px 25px rgba(42, 24, 131, 0.08);
 }
 
-main section section form{
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 10px;
-    align-items: end;
-    padding: 12px;
-    border-radius: 16px;
-    background: #ffffff;
-    border: 1px solid #e7e3ff;
-    box-shadow: 0 10px 25px rgba(42, 24, 131, 0.08);
+main > section > section:first-of-type label {
+  grid-column: 1 / -1;
+  font-weight: 700;
+  color: #2d2e3a;
 }
 
-main section section label{
-    grid-column: 1 / -1;
-    font-weight: 700;
-    color: #2d2e3a;
+main > section > section:first-of-type input {
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid #ded8ff;
+  outline: none;
+  font-size: 14px;
 }
 
-main section section input{
-    padding: 12px 12px;
-    border-radius: 12px;
-    border: 1px solid #ded8ff;
-    outline: none;
-    font-size: 14px;
+main > section > section:first-of-type button {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 0;
+  background: linear-gradient(90deg, #6a5cff, #4f8cff);
+  color: #ffffff;
+  font-weight: 800;
+  cursor: pointer;
 }
 
-main section section button{
-    padding: 12px 14px;
-    border-radius: 12px;
-    border: 0;
-    background: linear-gradient(90deg, #6a5cff, #4f8cff);
-    color: #ffffff;
-    font-weight: 800;
-    cursor: pointer;
+main > section > section:first-of-type nav {
+  margin-top: 12px;
 }
 
-main section section nav{
-    margin-top: 12px;
+/* ===== Lista de actividades (grid) ===== */
+/* El último section dentro de main->section será el de actividades */
+main > section > section:last-of-type {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
 }
 
-main section section nav ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
+/* Tarjetas */
+main article {
+  background: #ffffff;
+  border: 1px solid #e7e3ff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(42, 24, 131, 0.10);
+  display: grid;
 }
 
-main section[aria-label="Actividades disponibles"]{
-    margin-top: 16px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 18px;
+/* Contenido del artículo */
+main article > * {
+  padding-left: 14px;
+  padding-right: 14px;
 }
 
-main section[aria-label="Actividades disponibles"] article{
-    background: #ffffff;
-    border: 1px solid #e7e3ff;
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 12px 28px rgba(42, 24, 131, 0.10);
-    display: grid;
+main article h3 {
+  padding-top: 14px;
+  margin: 0;
+  font-size: 18px;
+  letter-spacing: -0.01em;
 }
 
-main section[aria-label="Actividades disponibles"] article header{
-    padding: 14px 14px 0;
+main article p {
+  margin: 0;
+  padding-top: 8px;
+  color: #4b4c59;
+  font-size: 14px;
 }
 
-main section[aria-label="Actividades disponibles"] article header h6{
-    margin: 0 0 10px;
-    display: inline-block;
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: #eef3ff;
-    color: #2c1f7a;
-    border: 1px solid #dbe6ff;
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+main article p strong {
+  color: #2d2e3a;
 }
 
-main section[aria-label="Actividades disponibles"] article header h4{
-    margin: 0;
-    font-size: 18px;
-    letter-spacing: -0.01em;
+/* Figure / imagen */
+main article figure {
+  margin: 12px 14px 0;
+  padding: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #eeeaff;
 }
 
-main section[aria-label="Actividades disponibles"] article header p{
-    margin: 8px 0 12px;
-    color: #4b4c59;
-    font-size: 14px;
+main article img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  display: block;
 }
 
-main section[aria-label="Actividades disponibles"] article figure{
-    margin: 12px 14px 0;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid #eeeaff;
+main article figcaption {
+  padding: 10px 10px;
+  font-size: 12px;
+  color: #5b5c6a;
+  background: #fbfaff;
 }
 
-main section[aria-label="Actividades disponibles"] article img{
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    display: block;
+/* Botón "Únete" (último párrafo del artículo) */
+main article p:last-of-type {
+  margin-top: 14px;
+  padding: 14px;
 }
 
-main section[aria-label="Actividades disponibles"] article figcaption{
-    padding: 10px 10px;
-    font-size: 12px;
-    color: #5b5c6a;
-    background: #fbfaff;
+main article p:last-of-type a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6a5cff, #4f8cff);
+  color: #ffffff;
+  font-weight: 900;
+  letter-spacing: 0.01em;
 }
 
-main section[aria-label="Actividades disponibles"] article address{
-    padding: 12px 14px 0;
-    font-style: normal;
-    color: #2d2e3a;
-    font-weight: 700;
+/* ===== Footer del sitio ===== */
+body > footer {
+  margin-top: 26px;
+  padding: 26px 18px 34px;
+  background: radial-gradient(circle at 20% 0%, #efeaff 0%, #ffffff 55%);
+  border-top: 1px solid #e7e3ff;
 }
 
-main section[aria-label="Actividades disponibles"] article p{
-    padding: 8px 14px 0;
-    margin: 0;
-    color: #4b4c59;
-    font-size: 14px;
+body > footer section {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-main section[aria-label="Actividades disponibles"] article p strong{
-    color: #2d2e3a;
+body > footer h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #2c1f7a;
 }
 
-main section[aria-label="Actividades disponibles"] article footer{
-    margin-top: 14px;
-    padding: 14px;
+body > footer section > p {
+  margin: 6px 0 0;
+  color: #4b4c59;
 }
 
-main section[aria-label="Actividades disponibles"] article footer a{
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    padding: 12px 14px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, #6a5cff, #4f8cff);
-    color: #ffffff;
-    font-weight: 900;
-    letter-spacing: 0.01em;
+body > footer nav {
+  margin-top: 12px;
 }
 
-footer{
-    margin-top: 26px;
-    padding: 26px 18px 34px;
-    background: radial-gradient(circle at 20% 0%, #efeaff 0%, #ffffff 55%);
-    border-top: 1px solid #e7e3ff;
+body > footer nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
-footer section{
-    max-width: 1100px;
-    margin: 0 auto;
+body > footer nav a {
+  text-decoration: none;
+  color: #2c1f7a;
+  font-weight: 800;
 }
 
-footer header{
-    padding: 0;
-}
-
-footer header h3{
-    margin: 0;
-    font-size: 18px;
-    color: #2c1f7a;
-}
-
-footer header p{
-    margin: 6px 0 0;
-    color: #4b4c59;
-}
-
-footer nav{
-    margin-top: 12px;
-}
-
-footer nav ul{
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-
-footer nav a{
-    text-decoration: none;
-    color: #2c1f7a;
-    font-weight: 800;
-}
-
-footer section > p{
-    margin: 14px 0 0;
-    color: #6b6c79;
-    font-size: 13px;
+body > footer section > p:last-of-type {
+  margin: 14px 0 0;
+  color: #6b6c79;
+  font-size: 13px;
 }
