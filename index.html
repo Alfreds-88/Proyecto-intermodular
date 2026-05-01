@@ -5,6 +5,167 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parcha2</title>
     <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            background-color: #FAFAFA;
+            font-family: system-ui, sans-serif;
+            color: #1F2937;
+        }
+
+        main {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        main > section {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+
+        main section span {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        main section span:first-child {
+            width: 300px;
+            height: 300px;
+            background: #6366F1;
+        }
+
+        main section span:last-child {
+            width: 400px;
+            height: 400px;
+            background: #A78BFA;
+            bottom: 10%;
+            right: 5%;
+        }
+
+        article {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        article section {
+            margin-bottom: 30px;
+        }
+
+        article figure img {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        article h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        article > section > p {
+            font-size: 1.1rem;
+            color: #6B7280;
+            margin: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        nav button {
+            background: white;
+            border: 2px solid #e5e7eb;
+            padding: 10px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #6B7280;
+            transition: 0.3s;
+        }
+
+        nav button:hover {
+            border-color: #6366F1;
+            color: #6366F1;
+        }
+
+        form {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form section {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        form section p {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1F2937;
+        }
+
+        form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        form input:focus {
+            outline: none;
+            border-color: #6366F1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        form > p {
+            margin-bottom: 15px;
+        }
+
+        form a {
+            color: #6366F1;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        form a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.9rem;
+            color: #6B7280;
+        }
+
+        footer a {
+            color: #6366F1;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -24,7 +185,7 @@
 
             <form>
                 <section>
-                    <p>Correo electrónic</p>
+                    <p>Correo electrónico</p>
                     <input type="email" placeholder="tu@email.com">
                 </section>
 
@@ -37,9 +198,9 @@
                     <a href="">¿Olvidaste tu contraseña?</a>
                 </p>
                 <p>
-                   <a href="./paginaMain/Main.html">Iniciar sesion</a>
+                   <a href="./Pagina mis Parches/MisParches.html">Iniciar sesión</a>
                 </p>
-                </form>
+            </form>
             <footer>
                 <p>Al continuar, aceptas nuestros <a href="">términos de servicio</a></p>
             </footer>
