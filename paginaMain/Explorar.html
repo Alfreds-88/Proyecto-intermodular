@@ -107,6 +107,42 @@
             border-radius: 12px;
         }
 
+        #modalCrear {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    overflow-y: auto;
+    padding: 20px;
+}
+.modal-card {
+    background: white;
+    border-radius: 20px;
+    border: 2px solid rgba(167,139,250,0.2);
+    max-width: 620px;
+    margin: 40px auto 16px;
+    padding: 32px;
+}
+.tips-card {
+    background: linear-gradient(135deg, rgb(81, 83, 212), rgb(167, 139, 250));
+    border: 1px solid rgba(167,139,250,0.3);
+    border-radius: 16px;
+    padding: 20px;
+    max-width: 620px;
+    margin: 0 auto 40px;
+}
+.btn-crear-main {
+    background: linear-gradient(to right, #6366F1, #A78BFA);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    width: 100%;
+}
+
   </style>
 </head>
 
@@ -118,7 +154,7 @@
       <span class="fw-bold fs-5 gradient-text mb-2 mb-sm-0">Parcha2</span>
       <div class="nav-pill-custom mb-2 mb-sm-0">
         <a href="./Main.html" class="active">🔍 Explorar</a>
-        <a href="#" onclick="return false;">✨ Crear</a>
+        <a href="#" onclick="mostrarCrear(); return false;">✨ Crear</a>
         <a href="../Pagina mis Parches/MisParches.html">📋 Mis Parches</a>
       </div>
       <div class="d-flex align-items-center gap-3">
@@ -246,7 +282,94 @@
     </div>
     <p class="text-muted small mt-3">2026 · Hecho con ❤️ para la comunidad</p>
   </footer>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function mostrarCrear() {
+        document.getElementById('modalCrear').style.display = 'block';
+    }
+    function cerrarCrear() {
+        document.getElementById('modalCrear').style.display = 'none';
+    }
+</script>
+
+  <div id="modalCrear">
+    <div style="max-width:620px; margin: 40px auto;">
+
+        <div class="modal-card">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex align-items-center gap-2">
+                    <div style="background:linear-gradient(135deg,#6366F1,#A78BFA);border-radius:12px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.1rem;">👥</div>
+                    <h5 class="mb-0 fw-bold gradient-text">Crear nuevo parche</h5>
+                </div>
+                <button onclick="cerrarCrear()" style="border:none;background:none;font-size:1.5rem;cursor:pointer;color:#6B7280;">✕</button>
+            </div>
+
+            <p class="text-muted small mb-4">✨ ¡Organiza una actividad y conoce gente increíble!</p>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Título del parche</label>
+                <input type="text" class="form-control" placeholder="Ej: Fútbol 5 en el parque">
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Descripción</label>
+                <textarea class="form-control" rows="3" placeholder="Cuéntanos sobre tu actividad..."></textarea>
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label class="form-label fw-semibold">Categoría</label>
+                    <select class="form-select">
+                        <option value="">Selecciona una categoría</option>
+                        <option>Deporte</option>
+                        <option>Arte</option>
+                        <option>Música</option>
+                        <option>Tecnología</option>
+                        <option>Gastronomía</option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <label class="form-label fw-semibold">Ambiente</label>
+                    <select class="form-select">
+                        <option value="">Selecciona el ambiente</option>
+                        <option>Relajado</option>
+                        <option>Activo</option>
+                        <option>Social</option>
+                        <option>Competitivo</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">📍 Ubicación</label>
+                <input type="text" class="form-control" placeholder="Ej: C. Enriqueta Ortega, 17, 03005 Alicante">
+            </div>
+            <div class="row mb-3">
+                <div class="col-6">
+                    <label class="form-label fw-semibold">📅 Fecha</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-6">
+                    <label class="form-label fw-semibold">🕐 Hora</label>
+                    <input type="time" class="form-control">
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="form-label fw-semibold">👥 Máximo de participantes</label>
+                <input type="number" class="form-control" placeholder="Ej: 10" min="2" max="100">
+            </div>
+            <button class="btn-crear-main">✨ Crear parche</button>
+        </div>
+
+        <div class="tips-card">
+            <h6 class="fw-bold mb-3" style="color: rgb(36, 30, 30);">💡 Tips para un buen parche</h6>
+            <ul class="list-unstyled mb-0">
+                <li class="mb-2 text-black">✅ Sé claro y específico en la descripción</li>
+                <li class="mb-2 text-black">✅ Elige un lugar de fácil acceso</li>
+                <li class="mb-2 text-black">✅ Define bien la fecha y hora</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>
