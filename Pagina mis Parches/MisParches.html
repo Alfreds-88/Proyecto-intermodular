@@ -131,6 +131,110 @@
             width: 100%;
             
         }
+
+                .dark-mode-btn {
+            position: fixed;
+            top: 68px;
+            right: 24px;
+            z-index: 99999;
+
+            width: 34px;
+            height: 34px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #6366F1;
+            color: white;
+
+            font-size: 16px;
+            cursor: pointer;
+
+            box-shadow: 0 3px 10px rgba(99, 102, 241, 0.35);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        body.dark-mode {
+    background-color: #111827;
+    color: #F9FAFB;
+}
+
+        body.dark-mode .navbar,
+        body.dark-mode footer {
+            background-color: #1F2937 !important;
+            border-color: #374151 !important;
+        }
+
+        body.dark-mode .hero-section {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(167, 139, 250, 0.16));
+            border-color: #374151;
+        }
+
+        body.dark-mode h1,
+        body.dark-mode h6,
+        body.dark-mode .fw-semibold,
+        body.dark-mode .fw-bold {
+            color: #F9FAFB;
+        }
+
+        body.dark-mode .text-muted {
+            color: #D1D5DB !important;
+        }
+
+        body.dark-mode .card-parche {
+            background-color: #1F2937;
+            border-color: #374151;
+            color: #F9FAFB;
+        }
+
+        body.dark-mode .badge-cat {
+            background: rgba(167, 139, 250, 0.18);
+            color: #C4B5FD;
+        }
+
+        body.dark-mode .form-control,
+        body.dark-mode .form-select,
+        body.dark-mode textarea {
+            background-color: #111827;
+            color: #F9FAFB;
+            border-color: #4B5563;
+        }
+
+        body.dark-mode .form-control::placeholder,
+        body.dark-mode textarea::placeholder {
+            color: #9CA3AF;
+        }
+
+        body.dark-mode .modal-card {
+            background-color: #1F2937;
+            color: #F9FAFB;
+            border-color: #374151;
+        }
+
+        body.dark-mode .tips-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(167, 139, 250, 0.18));
+            border-color: #374151;
+        }
+
+        body.dark-mode .tips-card h6,
+        body.dark-mode .tips-card li {
+            color: #F9FAFB !important;
+        }
+
+        body.dark-mode .dark-mode-btn {
+            background: #A78BFA;
+            color: #111827;
+        }
+
+        .dark-mode-btn:hover {
+            background: #4F46E5;
+            transform: scale(1.05);
+        }
     
         .hero-section {
       background: linear-gradient(135deg, rgba(23, 26, 188, 0.08), rgba(167, 139, 250, 0.12));
@@ -142,6 +246,8 @@
 </head>
 
 <body>
+
+    <button id="darkModeBtn" class="dark-mode-btn">🌙</button>
 
    <nav class="navbar bg-white shadow-sm px-4 py-2">
     <div class="container-fluid d-flex justify-content-center justify-content-md-between align-items-center flex-column flex-md-row gap-3 gap-md-0">
@@ -378,13 +484,26 @@
     </div>
 
     <script>
-        function mostrarCrear() {
-            document.getElementById('modalCrear').style.display = 'block';
+    function mostrarCrear() {
+        document.getElementById('modalCrear').style.display = 'block';
+    }
+
+    function cerrarCrear() {
+        document.getElementById('modalCrear').style.display = 'none';
+    }
+
+    const darkModeBtn = document.getElementById('darkModeBtn');
+
+    darkModeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+
+        if (document.body.classList.contains('dark-mode')) {
+            darkModeBtn.textContent = '☀️';
+        } else {
+            darkModeBtn.textContent = '🌙';
         }
-        function cerrarCrear() {
-            document.getElementById('modalCrear').style.display = 'none';
-        }
-    </script>
+    });
+</script>
 
 </body>
 
