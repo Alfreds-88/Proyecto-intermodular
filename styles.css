@@ -69,11 +69,12 @@ main section:first-child figure {
     display: inline-flex;
     background: linear-gradient(135deg, #6366F1, #A78BFA);
     padding: 16px;
+    padding-bottom: 5px;
     border-radius: 16px;
     margin-bottom: 16px;
 }
 main section:first-child img{
-    border-radius: 15px;
+    border-radius: 16px;
 
 }
 

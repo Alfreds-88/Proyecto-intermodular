@@ -1,213 +1,371 @@
 <!DOCTYPE html>
 <html lang="es">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parcha2</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            background-color: #FAFAFA;
-            font-family: system-ui, sans-serif;
-            color: #1F2937;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --indigo: #6366F1;
+            --violet: #8B5CF6;
+            --violet-light: #A78BFA;
+            --soft-bg: #FAFAFA;
+            --card-bg: #ffffff;
+            --text-dark: #111827;
+            --text-mid: #4B5563;
+            --text-light: #9CA3AF;
+            --border: #E5E7EB;
         }
 
-        main {
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--soft-bg);
             min-height: 100vh;
             display: flex;
+        }
+
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(145deg, #4f46e5 0%, #7c3aed 50%, #6d28d9 100%);
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 60px 50px;
             position: relative;
             overflow: hidden;
         }
 
-        main>section {
+        .left-panel::before {
+            content: '';
             position: absolute;
-            inset: 0;
-            z-index: -1;
-        }
-
-        main section span {
-            position: absolute;
+            width: 350px; height: 350px;
+            background: rgba(255,255,255,0.07);
             border-radius: 50%;
-            filter: blur(80px);
+            top: -80px; left: -80px;
+        }
+        .left-panel::after {
+            content: '';
+            position: absolute;
+            width: 250px; height: 250px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            bottom: -60px; right: -60px;
         }
 
-        main section span:first-child {
-            width: 300px;
-            height: 300px;
-            background: #6366F1;
-        }
-
-        main section span:last-child {
-            width: 400px;
-            height: 400px;
-            background: #A78BFA;
-            bottom: 10%;
-            right: 5%;
-        }
-
-        article {
-            text-align: center;
+        .brand {
             position: relative;
             z-index: 1;
+            text-align: center;
+            color: white;
         }
 
-        article section {
-            margin-bottom: 30px;
-        }
-
-        article figure img {
-            width: 100px;
-            height: 100px;
-            object-fit: contain;
-            margin-bottom: 20px;
-        }
-
-        article h1 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        article>section>p {
-            font-size: 1.1rem;
-            color: #6B7280;
-            margin: 0;
-        }
-
-        nav {
+        .brand-logo {
+            width: 90px;
+            height: 90px;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 24px;
             display: flex;
-            gap: 10px;
+            align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
+            margin: 0 auto 28px;
+            backdrop-filter: blur(10px);
+            font-size: 2.2rem;
         }
 
-        nav button {
-            background: white;
-            border: 2px solid #e5e7eb;
-            padding: 10px 30px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            color: #6B7280;
-            transition: 0.3s;
+        .brand h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1;
+            margin-bottom: 14px;
         }
 
-        nav button:hover {
-            border-color: #6366F1;
-            color: #6366F1;
-        }
-
-        form {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            max-width: 400px;
-            margin: 0 auto;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        form section {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        form section p {
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #1F2937;
-        }
-
-        form input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
+        .brand p {
             font-size: 1rem;
-            box-sizing: border-box;
+            font-weight: 300;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.6;
+            max-width: 280px;
+            margin: 0 auto 40px;
         }
 
-        form input:focus {
-            outline: none;
-            border-color: #6366F1;
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            width: 100%;
+            max-width: 280px;
         }
 
-        form>p {
-            margin-bottom: 15px;
-        }
-
-        form a {
-            color: #6366F1;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        form a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #e5e7eb;
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 0.9rem;
-            color: #6B7280;
+            color: rgba(255,255,255,0.85);
         }
 
-        footer a {
-            color: #6366F1;
+        .feature-list li span.dot {
+            width: 8px; height: 8px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .right-panel {
+            width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 50px;
+            background: var(--card-bg);
+        }
+
+        .right-inner {
+            width: 100%;
+            max-width: 360px;
+        }
+
+        .tab-nav {
+            display: flex;
+            background: #F3F4F6;
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 36px;
+        }
+
+        .tab-nav button {
+            flex: 1;
+            padding: 9px 0;
+            border: none;
+            background: transparent;
+            border-radius: 7px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-mid);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-nav button.active {
+            background: white;
+            color: var(--indigo);
+            box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .form-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            background: var(--soft-bg);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .field input:focus {
+            outline: none;
+            border-color: var(--indigo);
+            box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+            background: white;
+        }
+
+        .forgot {
+            display: block;
+            text-align: right;
+            font-size: 0.82rem;
+            color: var(--indigo);
             text-decoration: none;
+            font-weight: 500;
+            margin-top: -12px;
+            margin-bottom: 28px;
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .forgot:hover { text-decoration: underline; }
+
+        .btn-primary {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, var(--indigo), var(--violet));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            margin-bottom: 24px;
+        }
+
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-primary:active { transform: translateY(0); }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            color: var(--text-light);
+            font-size: 0.8rem;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .terms {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .terms a {
+            color: var(--indigo);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .terms a:hover { text-decoration: underline; }
+
+        @media (max-width: 800px) {
+            body { flex-direction: column; }
+
+            .left-panel {
+                padding: 40px 30px 36px;
+                flex: none;
+            }
+
+            .brand h1 { font-size: 2.4rem; }
+            .feature-list { display: none; }
+            .brand p { margin-bottom: 0; }
+
+            .right-panel {
+                width: 100%;
+                padding: 40px 24px;
+            }
+        }
+
+        body > div.left-panel > div > div > img {
+            border-radius: 17%;
+            ;
         }
     </style>
 </head>
-
 <body>
-    <main>
-        <article>
-            <section>
-                <figure>
-                    <img src="./imagenes/Screenshot 2026-02-09 200441.png" alt="">
-                </figure>
-                <h1>parcha2</h1>
-                <p>Conecta, crea y comparte experiencias increíbles</p>
-            </section>
 
-            <nav>
-                <button>Iniciar sesión</button>
-                <button>Registrarse</button>
+    <div class="left-panel">
+        <div class="brand">
+            <div class="brand-logo"><img src="/imagenes/logo Parcaha2.png" alt="" width="140" height="120"></div>
+            <h1>Parcha2</h1>
+            <p>Conecta, crea y comparte experiencias increíbles con quienes más te importan.</p>
+            <ul class="feature-list">
+                <li><span class="dot"></span> Organiza quedadas con amigos</li>
+                <li><span class="dot"></span> Descubre actividades cerca de ti</li>
+                <li><span class="dot"></span> Comparte momentos en tiempo real</li>
+                <li><span class="dot"></span> Crea grupos y comunidades</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <div class="right-inner">
+
+            <nav class="tab-nav">
+                <button class="active" id="btn-login">Iniciar sesión</button>
+                <button id="btn-register">Registrarse</button>
             </nav>
 
-            <form>
-                <section>
-                    <p>Correo electrónico</p>
-                    <input type="email" placeholder="tu@email.com">
-                </section>
+            <h2 class="form-title">Bienvenido de vuelta</h2>
+            <p class="form-subtitle">Accede a tu cuenta para continuar</p>
 
-                <section>
-                    <p>Contraseña</p>
-                    <input type="password" placeholder="••••••••">
-                </section>
+            <form id="login-form" onsubmit="return false;">
+                <div class="field">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="tu@email.com" autocomplete="email">
+                </div>
+                <div class="field">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
+                </div>
 
-                <p>
-                    <a href="">¿Olvidaste tu contraseña?</a>
-                </p>
-                <p>
-                    <a href="./Pagina mis Parches/MisParches.html">Iniciar sesión</a>
+                <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+
+                <button type="submit" class="btn-primary"
+                    onclick="window.location.href='./Pagina mis Parches/MisParches.html'">
+                    Iniciar sesión
+                </button>
+
+                <p class="terms">
+                    Al continuar, aceptas nuestros
+                    <a href="/TerminosYcondiciones.html">términos de servicio</a>
+                    y la <a href="/privacidad.html">política de privacidad</a>.
                 </p>
             </form>
-            <footer>
-                <p>Al continuar, aceptas nuestros <a href="">términos de servicio</a></p>
-            </footer>
-        </article>
-    </main>
-</body>
 
+        </div>
+    </div>
+
+    <script>
+        const btnLogin    = document.getElementById('btn-login');
+        const btnRegister = document.getElementById('btn-register');
+        const title       = document.querySelector('.form-title');
+        const subtitle    = document.querySelector('.form-subtitle');
+
+        btnLogin.addEventListener('click', () => {
+            btnLogin.classList.add('active');
+            btnRegister.classList.remove('active');
+            title.textContent    = 'Bienvenido de vuelta';
+            subtitle.textContent = 'Accede a tu cuenta para continuar';
+        });
+
+        btnRegister.addEventListener('click', () => {
+            btnRegister.classList.add('active');
+            btnLogin.classList.remove('active');
+            title.textContent    = 'Crear cuenta';
+            subtitle.textContent = 'Únete a parcha2 hoy mismo';
+        });
+    </script>
+
+</body>
 </html>

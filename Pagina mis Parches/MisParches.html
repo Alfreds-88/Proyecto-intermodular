@@ -144,15 +144,15 @@
 <body>
 
    <nav class="navbar bg-white shadow-sm px-4 py-2">
-    <div class="container-fluid d-flex justify-content-between align-items-center d-sm-flex flex-column flex-sm-row">
-        <span class="fw-bold fs-5 gradient-text mb-2 mb-sm-0">Parcha2</span>
-        <div class="nav-pill-custom mb-2 mb-sm-0">
+    <div class="container-fluid d-flex justify-content-center justify-content-md-between align-items-center flex-column flex-md-row gap-3 gap-md-0">
+        <span class="fw-bold fs-5 gradient-text mb-2 mb-md-0">Parcha2</span>
+        <div class="nav-pill-custom mb-2 mb-md-0">
             <a href="/paginaMain/Explorar.html">🔍 Explorar</a>
             <a href="#" onclick="mostrarCrear(); return false;">✨ Crear</a>
             <a href="#" class="active">📋 Mis Parches</a>
         </div>
         <div class="d-flex align-items-center gap-3 gap-md-0">
-            <span class="fw-semibold p-lg-2">Alfred</span>
+            <span class="fw-semibold p-lg-2">Usuario</span>
             <a href="../index.html" class="btn btn-purple btn-sm px-lg-2">Cerrar sesión</a>
         </div>
     </div>
@@ -166,14 +166,8 @@
     </div>
 
     <div class="container">
-        <div class="d-flex justify-content-center text-center align-items-center mb-2 ">
-            <div>
-                <h5 class="fw-bold mb-0 ">Mis actividades</h5>
-                <p class="text-muted small">Aquí están todos tus parches activos y pasados</p>
-            </div>
-        </div>
-
-        <div class="d-flex gap-3 mb-4 flex-wrap align-items-center justify-content-center justify-content-md-around">
+        
+        <div class="d-flex gap-3 mb-4 flex-wrap align-items-center justify-content-center justify-content-md-between">
             <input type="search" class="form-control" placeholder="🔍 Buscar por nombre..." style="max-width: 500px;">
             <div class="nav-pill-custom">
                 <a href="#" class="active">Activos</a>
@@ -190,8 +184,10 @@
                     <div class="card-body">
                         <span class="badge-cat mb-2 d-inline-block">Deportes</span>
                         <h6 class="fw-bold">Fútbol 5 Nocturno</h6>
-                        <p class="text-muted small mb-1">💬 <strong>Carlos:</strong> ¡Ya pedí la cancha para las 8!</p>
-                        <p class="text-muted small">🕐 19:30</p>
+                        <p class="text-muted small mb-1">¡Vamos a jugar un partidito bajo las luces! Todos los niveles bienvenidos.</p>
+                        <p class="text-muted small mb-1">📍 Polideportivo Municipal Centro</p>
+                        <p class="text-muted small mb-1">📅 Hoy · <strong>19:30 – 21:30</strong></p>
+                        <p class="text-muted small">👥 6/10 parcherxs · <em>Carlos M.</em></p>
                         <a href="#" class="btn btn-purple btn-sm px-3 mt-2">Ver detalles</a>
                     </div>
                 </div>
@@ -204,9 +200,10 @@
                     <div class="card-body">
                         <span class="badge-cat mb-2 d-inline-block">Música</span>
                         <h6 class="fw-bold">Tributo a Soda Stereo</h6>
-                        <p class="text-muted small mb-1">💬 <strong>Tú:</strong> ¿A qué hora nos vemos en la entrada?
-                        </p>
-                        <p class="text-muted small">🕐 14:20</p>
+                        <p class="text-muted small mb-1">¡Vive la mejor música de los 90! Un viaje nostálgico con la banda tributo más aclamada.</p>
+                        <p class="text-muted small mb-1">📍 Teatro Principal de Alicante</p>
+                        <p class="text-muted small mb-1">📅 Viernes 10 Oct · <strong>20:00 – 23:00</strong></p>
+                        <p class="text-muted small">👥 9/15 parcherxs · <em>Laura M.</em></p>
                         <a href="#" class="btn btn-purple btn-sm px-3 mt-2">Ver detalles</a>
                     </div>
                 </div>
@@ -214,13 +211,15 @@
 
             <div class="col-md-4">
                 <div class="card card-parche shadow-sm h-100">
-                    <img src="/imagenes ruben/dos-personas-de-negocios-hablando.jpg" class="card-img-top"
+                    <img src="/imagenes/coffeeMeeting.jpg" class="card-img-top"
                         style="height:160px;object-fit:cover;border-radius:14px 14px 0 0;" alt="Networking">
                     <div class="card-body">
                         <span class="badge-cat mb-2 d-inline-block">Social</span>
                         <h6 class="fw-bold">Café & Startups</h6>
-                        <p class="text-muted small mb-1">💬 <strong>Marta:</strong> Traigo los prototipos impresos.</p>
-                        <p class="text-muted small">📅 Ayer</p>
+                        <p class="text-muted small mb-1">Networking casual para emprendedores. Comparte ideas, conoce inversores y disfruta del mejor café.</p>
+                        <p class="text-muted small mb-1">📍 Cafetería Tres Texturas</p>
+                        <p class="text-muted small mb-1">📅 Miércoles 8 Oct · <strong>18:00 – 20:00</strong></p>
+                        <p class="text-muted small">👥 12/20 parcherxs · <em>Marta P.</em></p>
                         <a href="#" class="btn btn-purple btn-sm px-3 mt-2">Ver detalles</a>
                     </div>
                 </div>
@@ -233,8 +232,10 @@
                     <div class="card-body">
                         <span class="badge-cat mb-2 d-inline-block">Deportes</span>
                         <h6 class="fw-bold">Senderismo El Tablazo</h6>
-                        <p class="text-muted small mb-1">💬 <strong>Diego:</strong> Nos encontramos en la entrada.</p>
-                        <p class="text-muted small">🕐 08:00</p>
+                        <p class="text-muted small mb-1">Caminata de nivel medio con vistas increíbles. Conecta con la naturaleza y nuevos amigos.</p>
+                        <p class="text-muted small mb-1">📍 Castillo de Santa Bárbara</p>
+                        <p class="text-muted small mb-1">📅 Domingo 6 Oct · <strong>06:00 – 14:00</strong></p>
+                        <p class="text-muted small">👥 11/15 parcherxs · <em>Diego R.</em></p>
                         <a href="#" class="btn btn-purple btn-sm px-3 mt-2">Ver detalles</a>
                     </div>
                 </div>
@@ -247,8 +248,10 @@
                     <div class="card-body">
                         <span class="badge-cat mb-2 d-inline-block">Deportes</span>
                         <h6 class="fw-bold">Ciclopaseo Nocturno</h6>
-                        <p class="text-muted small mb-1">💬 <strong>Julián:</strong> No olvides traer casco y luz.</p>
-                        <p class="text-muted small">🕐 19:30</p>
+                        <p class="text-muted small mb-1">Recorre la ciudad sobre dos ruedas bajo las luces. Recorrido seguro y ambiente relajado.</p>
+                        <p class="text-muted small mb-1">📍 Plaza de Luceros</p>
+                        <p class="text-muted small mb-1">📅 Jueves 7 Oct · <strong>19:30 – 21:00</strong></p>
+                        <p class="text-muted small">👥 8/12 parcherxs · <em>Julián S.</em></p>
                         <a href="#" class="btn btn-purple btn-sm px-3 mt-2">Ver detalles</a>
                     </div>
                 </div>
@@ -260,9 +263,11 @@
                         style="height:160px;object-fit:cover;border-radius:14px 14px 0 0;" alt="Taller">
                     <div class="card-body">
                         <span class="badge-cat mb-2 d-inline-block">Cultura</span>
-                        <h6 class="fw-bold">Taller de Arte</h6>
-                        <p class="text-muted small mb-1">💬 <strong>Sofía:</strong> Materiales incluidos.</p>
-                        <p class="text-muted small">📅 Mañana</p>
+                        <h6 class="fw-bold">Taller de Arte Urbano</h6>
+                        <p class="text-muted small mb-1">Aprende técnicas de arte urbano con un artista profesional. Todos los materiales incluidos.</p>
+                        <p class="text-muted small mb-1">📍 Centro Cultural Línea Verde</p>
+                        <p class="text-muted small mb-1">📅 Sábado 5 Oct · <strong>15:00 – 18:00</strong></p>
+                        <p class="text-muted small">👥 10/18 parcherxs · <em>Sofía C.</em></p>
                         <a href="#" class="btn btn-purple btn-sm px-3 mt-2">Ver detalles</a>
                     </div>
                 </div>
