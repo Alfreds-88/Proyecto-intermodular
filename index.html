@@ -64,66 +64,18 @@
             color: white;
         }
 
-        .brand-logo {
-            width: 90px;
-            height: 90px;
-            background: rgba(255,255,255,0.15);
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 28px;
-            backdrop-filter: blur(10px);
-            font-size: 2.2rem;
+        .brand-logo img {
+            border-radius: 17%;
         }
 
         .brand h1 {
             font-family: 'Syne', sans-serif;
             font-size: 3.2rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            line-height: 1;
-            margin-bottom: 14px;
-        }
-
-        .brand p {
-            font-size: 1rem;
-            font-weight: 300;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.6;
-            max-width: 280px;
-            margin: 0 auto 40px;
-        }
-
-        .feature-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            width: 100%;
-            max-width: 280px;
-        }
-
-        .feature-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.85);
-        }
-
-        .feature-list li span.dot {
-            width: 8px; height: 8px;
-            background: rgba(255,255,255,0.5);
-            border-radius: 50%;
-            flex-shrink: 0;
         }
 
         .right-panel {
             width: 480px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 60px 50px;
@@ -148,78 +100,34 @@
             padding: 9px 0;
             border: none;
             background: transparent;
-            border-radius: 7px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-mid);
             cursor: pointer;
-            transition: all 0.2s;
         }
 
         .tab-nav button.active {
             background: white;
             color: var(--indigo);
-            box-shadow: 0 1px 6px rgba(0,0,0,0.1);
         }
 
         .form-title {
-            font-family: 'Syne', sans-serif;
             font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-dark);
             margin-bottom: 6px;
         }
 
         .form-subtitle {
-            font-size: 0.9rem;
-            color: var(--text-light);
             margin-bottom: 32px;
+            color: var(--text-light);
         }
 
         .field {
             margin-bottom: 20px;
         }
 
-        .field label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 8px;
-        }
-
         .field input {
             width: 100%;
-            padding: 12px 16px;
-            border: 1.5px solid var(--border);
+            padding: 12px;
             border-radius: 10px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            background: var(--soft-bg);
-            transition: border-color 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--border);
         }
-
-        .field input:focus {
-            outline: none;
-            border-color: var(--indigo);
-            box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
-            background: white;
-        }
-
-        .forgot {
-            display: block;
-            text-align: right;
-            font-size: 0.82rem;
-            color: var(--indigo);
-            text-decoration: none;
-            font-weight: 500;
-            margin-top: -12px;
-            margin-bottom: 28px;
-        }
-
-        .forgot:hover { text-decoration: underline; }
 
         .btn-primary {
             width: 100%;
@@ -228,144 +136,154 @@
             color: white;
             border: none;
             border-radius: 10px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.2s, transform 0.15s;
-            margin-bottom: 24px;
         }
 
-        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
-        .btn-primary:active { transform: translateY(0); }
-
-        .divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-            color: var(--text-light);
-            font-size: 0.8rem;
+        .forgot {
+            display: block;
+            text-align: right;
+            margin-bottom: 20px;
+            font-size: small;
         }
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border);
-        }
-
-        .terms {
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .terms a {
-            color: var(--indigo);
-            text-decoration: none;
-            font-weight: 500;
-        }
-        .terms a:hover { text-decoration: underline; }
 
         @media (max-width: 800px) {
             body { flex-direction: column; }
-
-            .left-panel {
-                padding: 40px 30px 36px;
-                flex: none;
-            }
-
-            .brand h1 { font-size: 2.4rem; }
-            .feature-list { display: none; }
-            .brand p { margin-bottom: 0; }
-
-            .right-panel {
-                width: 100%;
-                padding: 40px 24px;
-            }
-        }
-
-        body > div.left-panel > div > div > img {
-            border-radius: 17%;
-            ;
+            .right-panel { width: 100%; }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="left-panel">
-        <div class="brand">
-            <div class="brand-logo"><img src="/imagenes/logo Parcaha2.png" alt="" width="140" height="120"></div>
-            <h1>Parcha2</h1>
-            <p>Conecta, crea y comparte experiencias increíbles con quienes más te importan.</p>
-            <ul class="feature-list">
-                <li><span class="dot"></span> Organiza quedadas con amigos</li>
-                <li><span class="dot"></span> Descubre actividades cerca de ti</li>
-                <li><span class="dot"></span> Comparte momentos en tiempo real</li>
-                <li><span class="dot"></span> Crea grupos y comunidades</li>
-            </ul>
+<div class="left-panel">
+    <div class="brand">
+        <div class="brand-logo">
+            <img src="/imagenes/logo Parcaha2.png" width="120">
         </div>
+        <h1>Parcha2</h1>
+        <p>Conecta, crea y comparte experiencias increíbles</p>
+    </div>
+</div>
+
+<div class="right-panel">
+<div class="right-inner">
+
+<nav class="tab-nav">
+    <button class="active" id="btn-login">Iniciar sesión</button>
+    <button id="btn-register">Registrarse</button>
+</nav>
+
+<h2 class="form-title">Bienvenido de vuelta</h2>
+<p class="form-subtitle">Accede a tu cuenta para continuar</p>
+
+<!-- LOGIN -->
+<form id="login-form">
+    <div class="field">
+        <input type="email" id="email" placeholder="Correo electrónico">
     </div>
 
-    <div class="right-panel">
-        <div class="right-inner">
-
-            <nav class="tab-nav">
-                <button class="active" id="btn-login">Iniciar sesión</button>
-                <button id="btn-register">Registrarse</button>
-            </nav>
-
-            <h2 class="form-title">Bienvenido de vuelta</h2>
-            <p class="form-subtitle">Accede a tu cuenta para continuar</p>
-
-            <form id="login-form" onsubmit="return false;">
-                <div class="field">
-                    <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" placeholder="tu@email.com" autocomplete="email">
-                </div>
-                <div class="field">
-                    <label for="password">Contraseña</label>
-                    <input type="password" id="password" placeholder="••••••••" autocomplete="current-password">
-                </div>
-
-                <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
-
-                <button type="submit" class="btn-primary"
-                    onclick="window.location.href='./Pagina mis Parches/MisParches.html'">
-                    Iniciar sesión
-                </button>
-
-                <p class="terms">
-                    Al continuar, aceptas nuestros
-                    <a href="/TerminosYcondiciones.html">términos de servicio</a>
-                    y la <a href="/privacidad.html">política de privacidad</a>.
-                </p>
-            </form>
-
-        </div>
+    <div class="field">
+        <input type="password" id="password" placeholder="Contraseña">
     </div>
 
-    <script>
-        const btnLogin    = document.getElementById('btn-login');
-        const btnRegister = document.getElementById('btn-register');
-        const title       = document.querySelector('.form-title');
-        const subtitle    = document.querySelector('.form-subtitle');
+    <a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
 
-        btnLogin.addEventListener('click', () => {
-            btnLogin.classList.add('active');
-            btnRegister.classList.remove('active');
-            title.textContent    = 'Bienvenido de vuelta';
-            subtitle.textContent = 'Accede a tu cuenta para continuar';
-        });
+    <button type="submit" class="btn-primary">Iniciar sesión</button>
+</form>
 
-        btnRegister.addEventListener('click', () => {
-            btnRegister.classList.add('active');
-            btnLogin.classList.remove('active');
-            title.textContent    = 'Crear cuenta';
-            subtitle.textContent = 'Únete a parcha2 hoy mismo';
-        });
-    </script>
+<!-- REGISTER -->
+<form id="register-form" style="display:none;">
+    <div class="field">
+        <input type="text" id="name" placeholder="Nombre">
+    </div>
+
+    <div class="field">
+        <input type="email" id="email-register" placeholder="Correo electrónico">
+    </div>
+
+    <div class="field">
+        <input type="password" id="password-register" placeholder="Contraseña">
+    </div>
+
+    <div class="field">
+        <input type="password" id="confirm-password" placeholder="Repetir contraseña">
+    </div>
+
+    <button type="submit" class="btn-primary">Crear cuenta</button>
+</form>
+
+</div>
+</div>
+
+<script>
+const btnLogin = document.getElementById('btn-login');
+const btnRegister = document.getElementById('btn-register');
+
+const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+
+const title = document.querySelector('.form-title');
+const subtitle = document.querySelector('.form-subtitle');
+
+btnLogin.addEventListener('click', () => {
+    btnLogin.classList.add('active');
+    btnRegister.classList.remove('active');
+
+    loginForm.style.display = 'block';
+    registerForm.style.display = 'none';
+
+    title.textContent = 'Bienvenido de vuelta';
+    subtitle.textContent = 'Accede a tu cuenta para continuar';
+});
+
+btnRegister.addEventListener('click', () => {
+    btnRegister.classList.add('active');
+    btnLogin.classList.remove('active');
+
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'block';
+
+    title.textContent = 'Crear cuenta';
+    subtitle.textContent = 'Únete a parcha2 hoy mismo';
+});
+
+// LOGIN
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    if (!email || !password) {
+        alert('Completa todos los campos');
+        return;
+    }
+
+    window.location.href = './Pagina mis Parches/MisParches.html';
+});
+
+// REGISTER
+registerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email-register').value.trim();
+    const password = document.getElementById('password-register').value.trim();
+    const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+    if (!name || !email || !password || !confirmPassword) {
+        alert('Completa todos los campos');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert('Las contraseñas no coinciden');
+        return;
+    }
+
+    alert('Cuenta creada correctamente (simulado)');
+});
+</script>
 
 </body>
 </html>

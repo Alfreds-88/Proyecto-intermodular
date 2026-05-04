@@ -78,6 +78,20 @@
       color: white;
     }
 
+    .btn-añadido {
+      background: linear-gradient(to right, rgba(167, 139, 250, 0.4), rgba(196, 181, 253, 0.4));
+      color: #a78bfa;
+      border: 1px solid rgba(167, 139, 250, 0.3);
+      border-radius: 50px;
+      cursor: not-allowed;
+    }
+
+    .btn-añadido:hover {
+      opacity: 1;
+      color: #a78bfa;
+      background: linear-gradient(to right, rgba(167, 139, 250, 0.4), rgba(196, 181, 253, 0.4));
+    }
+
     .category-pill {
       background: white;
       border: 2px solid rgba(167, 139, 250, 0.3);
@@ -197,7 +211,7 @@
             <p class="text-muted small mb-1">📍 Alicante Futbol Indoor</p>
             <p class="text-muted small mb-1">📅 Sábado 5 Oct · <strong>16:00 – 18:00</strong></p>
             <p class="text-muted small">👥 7/10 parcherxs · <em>Carlos M.</em></p>
-            <a href="#" class="btn btn-purple btn-sm px-3 mt-2">¡Únete al parche!</a>
+            <a href="#" class="btn btn-purple btn-sm px-3 mt-2 btn-unirse" data-id="futbol-5-parque" onclick="unirseparche(event, 'Fútbol 5 en el parque'); return false;">¡Únete al parche!</a>
           </div>
         </div>
       </div>
@@ -214,7 +228,7 @@
             <p class="text-muted small mb-1">📍 Cafetería Tres Texturas</p>
             <p class="text-muted small mb-1">📅 Viernes 4 Oct · <strong>18:00 – 20:00</strong></p>
             <p class="text-muted small">👥 4/8 parcherxs · <em>Ana L.</em></p>
-            <a href="#" class="btn btn-purple btn-sm px-3 mt-2">¡Únete al parche!</a>
+            <a href="#" class="btn btn-purple btn-sm px-3 mt-2 btn-unirse" data-id="cafe-charla" onclick="unirseparche(event, 'Café y charla'); return false;">¡Únete al parche!</a>
           </div>
         </div>
       </div>
@@ -230,7 +244,7 @@
             <p class="text-muted small mb-1">📍 Castillo de Santa Bárbara</p>
             <p class="text-muted small mb-1">📅 Domingo 6 Oct · <strong>06:00 – 14:00</strong></p>
             <p class="text-muted small">👥 8/15 parcherxs · <em>Diego R.</em></p>
-            <a href="#" class="btn btn-purple btn-sm px-3 mt-2">¡Únete al parche!</a>
+            <a href="#" class="btn btn-purple btn-sm px-3 mt-2 btn-unirse" data-id="senderismo-tablazo" onclick="unirseparche(event, 'Senderismo El Tablazo'); return false;">¡Únete al parche!</a>
           </div>
         </div>
       </div>
@@ -246,7 +260,7 @@
             <p class="text-muted small mb-1">📍 Camino Viejo de Elche, km7</p>
             <p class="text-muted small mb-1">📅 Domingo 6 Oct · <strong>09:00 – 13:00</strong></p>
             <p class="text-muted small">👥 12/20 parcherxs · <em>Sofía C.</em></p>
-            <a href="#" class="btn btn-purple btn-sm px-3 mt-2">¡Únete al parche!</a>
+            <a href="#" class="btn btn-purple btn-sm px-3 mt-2 btn-unirse" data-id="voluntariado-animales" onclick="unirseparche(event, 'Voluntariado en refugio de animales'); return false;">¡Únete al parche!</a>
           </div>
         </div>
       </div>
@@ -262,7 +276,7 @@
             <p class="text-muted small mb-1">📍 Explanada de Alicante</p>
             <p class="text-muted small mb-1">📅 Viernes 4 Oct · <strong>19:30 – 22:00</strong></p>
             <p class="text-muted small">👥 18/25 parcherxs · <em>Julián V.</em></p>
-            <a href="#" class="btn btn-purple btn-sm px-3 mt-2">¡Únete al parche!</a>
+            <a href="#" class="btn btn-purple btn-sm px-3 mt-2 btn-unirse" data-id="ciclopaseo-nocturno" onclick="unirseparche(event, 'Ciclopaseo Nocturno'); return false;">¡Únete al parche!</a>
           </div>
         </div>
       </div>
@@ -291,6 +305,42 @@
     }
     function cerrarCrear() {
         document.getElementById('modalCrear').style.display = 'none';
+    }
+
+    // Cargar parches añadidos al cargar la página
+    window.addEventListener('load', function() {
+        const parchesAñadidos = JSON.parse(localStorage.getItem('parchesAñadidos')) || [];
+        parchesAñadidos.forEach(id => {
+            const btn = document.querySelector(`[data-id="${id}"]`);
+            if (btn) {
+                btn.classList.add('btn-añadido');
+                btn.classList.remove('btn-purple');
+                btn.textContent = '✓ ¡Añadido!';
+                btn.style.pointerEvents = 'none';
+            }
+        });
+    });
+
+    // Función para unirse a un parche
+    function unirseparche(event, nombreParche) {
+        event.preventDefault();
+        const btn = event.target;
+        const parchId = btn.getAttribute('data-id');
+
+        // Obtener los parches añadidos del localStorage
+        let parchesAñadidos = JSON.parse(localStorage.getItem('parchesAñadidos')) || [];
+
+        // Verificar si ya está añadido
+        if (!parchesAñadidos.includes(parchId)) {
+            parchesAñadidos.push(parchId);
+            localStorage.setItem('parchesAñadidos', JSON.stringify(parchesAñadidos));
+
+            // Cambiar el estilo del botón
+            btn.classList.remove('btn-purple');
+            btn.classList.add('btn-añadido');
+            btn.textContent = '✓ ¡Añadido!';
+            btn.style.pointerEvents = 'none';
+        }
     }
 </script>
 
