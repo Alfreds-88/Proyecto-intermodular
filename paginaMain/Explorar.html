@@ -377,15 +377,24 @@ body.dark-mode .dark-mode-btn {
     color: #111827;
 }
 
+@media (min-width: 992px) {
+  .carousel-inner {
+    max-height: 400px;
+  }
+
+  .carousel-inner img {
+    height: 400px;
+    object-fit: cover;
+  }
+}
+
   </style>
 </head>
 
 <body>
 
-  <!-- Botón de toggle tema -->
   <button id="theme-toggle-btn" onclick="toggleTheme()" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-size: 1rem; padding: 6px 9px; border: 1px solid #ccc; border-radius: 50%; background: rgba(255,255,255,0.95); cursor: pointer; transition: all 0.3s; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">🌙</button>
 
-  <!-- NAVBAR -->
   <nav class="navbar bg-white shadow-sm px-4 py-2">
     <div class="container-fluid d-flex justify-content-center justify-content-md-between align-items-center flex-column flex-md-row gap-3 gap-md-0">
       <span class="fw-bold fs-5 gradient-text mb-2 mb-md-0">Parcha2</span>
@@ -401,7 +410,26 @@ body.dark-mode .dark-mode-btn {
     </div>
   </nav>
 
-  <!-- HERO -->
+  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/imagenes/mandarhinobe-picnic-7055653.jpg" class="d-block w-100" alt="PicnicImg">
+    </div>
+    <div class="carousel-item">
+      <img src="/imagenes/geralt-karaoke-10184748.jpg" class="d-block w-100" alt="KaraokeImg">
+    </div>
+    <div class="carousel-item">
+      <img src="/imagenes/justasurferdude-womans-day-4390452.jpg" class="d-block w-100" alt="SurfingImg">
+    </div>
+    <div class="carousel-item">
+      <img src="/imagenes/jackmac34-diver-549380.jpg" class="d-block w-100" alt="SurfingImg">
+    </div>
+    <div class="carousel-item">
+      <img src="/imagenes/vilkasss-hiking-10228748.jpg" class="d-block w-100" alt="SurfingImg">
+    </div>
+  </div>
+</div>
+
   <div class="hero-section py-4 px-4 mb-4">
     <div class="container text-center">
       <h1 class="fw-bold mb-1">Descubre parches</h1>
@@ -420,7 +448,7 @@ body.dark-mode .dark-mode-btn {
         <a href="#" class="category-pill">Cultura</a>
     </div>
 </div>
-    <!-- CARDS -->
+
     <div class="row g-4 mb-5">
 
       <div class="col-md-4">
@@ -507,7 +535,7 @@ body.dark-mode .dark-mode-btn {
     </div>
   </div>
 
-  <!-- FOOTER -->
+
   <footer class="bg-white border-top py-4 text-center">
     <p class="fw-bold gradient-text mb-3">Parcha2</p>
     <p class="text-muted small mb-lg-3">Conectando personas a través de experiencias compartidas</p>
@@ -550,7 +578,6 @@ body.dark-mode .dark-mode-btn {
         }
     });
 
-    // Cargar parches añadidos al cargar la página
     window.addEventListener('load', function() {
         const parchesAñadidos = JSON.parse(localStorage.getItem('parchesAñadidos')) || [];
         parchesAñadidos.forEach(id => {
@@ -564,21 +591,17 @@ body.dark-mode .dark-mode-btn {
         });
     });
 
-    // Función para unirse a un parche
     function unirseparche(event, nombreParche) {
         event.preventDefault();
         const btn = event.target;
         const parchId = btn.getAttribute('data-id');
 
-        // Obtener los parches añadidos del localStorage
         let parchesAñadidos = JSON.parse(localStorage.getItem('parchesAñadidos')) || [];
 
-        // Verificar si ya está añadido
         if (!parchesAñadidos.includes(parchId)) {
             parchesAñadidos.push(parchId);
             localStorage.setItem('parchesAñadidos', JSON.stringify(parchesAñadidos));
 
-            // Cambiar el estilo del botón
             btn.classList.remove('btn-purple');
             btn.classList.add('btn-añadido');
             btn.textContent = '✓ ¡Añadido!';
