@@ -391,10 +391,120 @@ body.dark-mode .dark-mode-btn {
   </style>
 </head>
 
+<button onclick="abrirChat()" style="position:fixed; bottom:20px; right:20px; background:#6366F1; color:white; border:none; border-radius:50%; width:55px; height:55px; font-size:24px; cursor:pointer; z-index:999;">
+    💬
+</button>
+
+
+<div id="chatbot" style="display:none; position:fixed; bottom:90px; right:20px; width:300px; background:white; border:1px solid #ddd; border-radius:16px; z-index:999; overflow:hidden;">
+    
+    
+    <div style="background:#6366F1; color:white; padding:12px 16px; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-weight:bold;">🤖 Asistente Parcha2</span>
+        <button onclick="cerrarChat()" style="background:none; border:none; color:white; font-size:18px; cursor:pointer;">✕</button>
+    </div>
+
+    
+    <div id="mensajes" style="height:280px; overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:8px;">
+        <div style="background:#f3f4f6; border-radius:10px; padding:8px 12px; font-size:14px;">
+            ¡Hola! Soy el asistente de Parcha2 👋 ¿En qué te puedo ayudar?
+        </div>
+    </div>
+
+    
+    <div style="padding:10px; border-top:1px solid #ddd; display:flex; gap:6px;">
+        <input id="inputChat" type="text" placeholder="Escribe aquí..." onkeypress="enterEnviar(event)" style="flex:1; border:1px solid #ddd; border-radius:20px; padding:6px 12px; font-size:14px; outline:none;">
+        <button onclick="enviarMensaje()" style="background:#6366F1; color:white; border:none; border-radius:50%; width:35px; height:35px; cursor:pointer;">➤</button>
+    </div>
+</div>
+
+<script>
+    function abrirChat() {
+        document.getElementById('chatbot').style.display = 'block';
+    }
+
+    function cerrarChat() {
+        document.getElementById('chatbot').style.display = 'none';
+    }
+
+    function enterEnviar(event) {
+        if (event.key === 'Enter') enviarMensaje();
+    }
+
+    function enviarMensaje() {
+        const input = document.getElementById('inputChat');
+        const texto = input.value.trim().toLowerCase();
+        if (texto === '') return;
+
+        mostrarMensaje(input.value, 'usuario');
+        input.value = '';
+
+        setTimeout(() => {
+            mostrarMensaje(responder(texto), 'bot');
+        }, 400);
+    }
+
+    function mostrarMensaje(texto, tipo) {
+        const caja = document.getElementById('mensajes');
+        const msg = document.createElement('div');
+        msg.style.cssText = tipo === 'usuario'
+            ? 'background:#6366F1; color:white; border-radius:10px; padding:8px 12px; font-size:14px; align-self:flex-end; max-width:80%;'
+            : 'background:#f3f4f6; border-radius:10px; padding:8px 12px; font-size:14px; max-width:80%;';
+        msg.textContent = texto;
+        caja.appendChild(msg);
+        caja.scrollTop = caja.scrollHeight;
+    }
+
+    function responder(texto) {
+    if (texto.includes('hola') || texto.includes('buenas') || texto.includes('hey') || texto.includes('buenos')) {
+        return '¡Hola! ¿En qué te puedo ayudar? 😊';
+
+    } else if (texto.includes('crear') || texto.includes('nuevo') || texto.includes('organizar') || texto.includes('hacer un parche')) {
+        return 'Para crear un parche ve a la sección ✨ Crear del menú de arriba.';
+
+    } else if (texto.includes('mis parche') || texto.includes('actividad') || texto.includes('parche activo') || texto.includes('ver mis')) {
+        return 'Puedes ver tus actividades en 📋 Mis Parches desde el menú de navegación.';
+
+    } else if (texto.includes('unir') || texto.includes('apuntar') || texto.includes('participar') || texto.includes('entrar')) {
+        return 'Para unirte a un parche ve a 🔍 Explorar y pulsa en el que te interese.';
+
+    } else if (texto.includes('cuenta') || texto.includes('perfil') || texto.includes('usuario') || texto.includes('contraseña')) {
+        return 'Puedes gestionar tu cuenta pulsando en "Mi cuenta" arriba a la derecha.';
+
+    } else if (texto.includes('buscar') || texto.includes('encontrar') || texto.includes('explorar')) {
+        return 'Para buscar parches ve a 🔍 Explorar y usa el buscador o filtra por categoría.';
+
+    } else if (texto.includes('gracias') || texto.includes('ok') || texto.includes('vale') || texto.includes('perfecto')) {
+        return '¡De nada! Si necesitas algo más aquí estoy 😊';
+
+    } else if (texto.includes('adios') || texto.includes('hasta') || texto.includes('bye') || texto.includes('chao')) {
+        return '¡Hasta luego! Que disfrutes tus parches 🎉';
+
+    } else {
+        return 'No entiendo bien tu pregunta 🤔 Puedes preguntarme sobre crear parches, explorar actividades o tu cuenta.';
+    }
+}
+    function mostrarMensaje(texto, tipo) {
+    const caja = document.getElementById('mensajes');
+    const modoOscuro = document.body.classList.contains('dark') || document.documentElement.getAttribute('data-bs-theme') === 'dark';
+    const colorFondo = modoOscuro ? '#2d2d2d' : '#f3f4f6';
+    const colorTexto = modoOscuro ? 'white' : 'black';
+
+    const msg = document.createElement('div');
+    msg.style.cssText = tipo === 'usuario'
+        ? 'background:#6366F1; color:white; border-radius:10px; padding:8px 12px; font-size:14px; align-self:flex-end; max-width:80%;'
+        : `background:${colorFondo}; color:${colorTexto}; border-radius:10px; padding:8px 12px; font-size:14px; max-width:80%;`;
+    msg.textContent = texto;
+    caja.appendChild(msg);
+    caja.scrollTop = caja.scrollHeight;
+}
+</script>
 <body>
 
+  
   <button id="theme-toggle-btn" onclick="toggleTheme()" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-size: 1rem; padding: 6px 9px; border: 1px solid #ccc; border-radius: 50%; background: rgba(255,255,255,0.95); cursor: pointer; transition: all 0.3s; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">🌙</button>
 
+ 
   <nav class="navbar bg-white shadow-sm px-4 py-2">
     <div class="container-fluid d-flex justify-content-center justify-content-md-between align-items-center flex-column flex-md-row gap-3 gap-md-0">
       <span class="fw-bold fs-5 gradient-text mb-2 mb-md-0">Parcha2</span>
