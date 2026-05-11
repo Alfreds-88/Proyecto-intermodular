@@ -642,7 +642,94 @@
 
             document.getElementById('contador-parches').textContent = parchesAñadidos.length;
         });
-</script>
+    </script>
+
+    <button onclick="abrirChat()" style="position:fixed; bottom:20px; left:20px; width:40px; height:40px; border-radius:50%; background: #6366F1; color:white; border:none; font-size:20px; cursor:pointer; box-shadow:0 4px 12px rgba(99, 102, 241, 0.4); z-index:998; display:flex; align-items:center; justify-content:center;">
+        💬
+    </button>
+
+    <div id="chatbot" style="display:none; position:fixed; bottom:20px; left:20px; width:300px; background:white; border:1px solid #ddd; border-radius:16px; z-index:999; overflow:hidden;">
+        
+        
+        <div style="background:#6366F1; color:white; padding:12px 16px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-weight:bold;">🤖 Asistente Parcha2</span>
+            <button onclick="cerrarChat()" style="background:none; border:none; color:white; font-size:18px; cursor:pointer;">✕</button>
+        </div>
+
+        
+        <div id="mensajes" style="height:280px; overflow-y:auto; padding:12px; display:flex; flex-direction:column; gap:8px;">
+            <div style="background:#f3f4f6; border-radius:10px; padding:8px 12px; font-size:14px;">
+                ¡Hola! Soy el asistente de Parcha2 👋 ¿En qué te puedo ayudar?
+            </div>
+        </div>
+
+        
+        <div style="padding:10px; border-top:1px solid #ddd; display:flex; gap:6px;">
+            <input id="inputChat" type="text" placeholder="Escribe aquí..." onkeypress="enterEnviar(event)" style="flex:1; border:1px solid #ddd; border-radius:20px; padding:6px 12px; font-size:14px; outline:none;">
+            <button onclick="enviarMensaje()" style="background:#6366F1; color:white; border:none; border-radius:50%; width:35px; height:35px; cursor:pointer;">➤</button>
+        </div>
+    </div>
+
+    <script>
+        function abrirChat() {
+            document.getElementById('chatbot').style.display = 'block';
+        }
+
+        function cerrarChat() {
+            document.getElementById('chatbot').style.display = 'none';
+        }
+
+        function enterEnviar(event) {
+            if (event.key === 'Enter') enviarMensaje();
+        }
+
+        function enviarMensaje() {
+            const input = document.getElementById('inputChat');
+            const texto = input.value.trim().toLowerCase();
+            if (texto === '') return;
+
+            mostrarMensaje(input.value, 'usuario');
+            input.value = '';
+
+            setTimeout(() => {
+                const respuesta = obtenerRespuesta(texto);
+                mostrarMensaje(respuesta, 'bot');
+            }, 300);
+        }
+
+        function mostrarMensaje(texto, tipo) {
+            const mensajesDiv = document.getElementById('mensajes');
+            const mensajeDiv = document.createElement('div');
+            
+            if (tipo === 'usuario') {
+                mensajeDiv.style.cssText = 'background:#6366F1; color:white; border-radius:10px; padding:8px 12px; font-size:14px; align-self:flex-end; max-width:80%;';
+            } else {
+                mensajeDiv.style.cssText = 'background:#f3f4f6; border-radius:10px; padding:8px 12px; font-size:14px; align-self:flex-start; max-width:80%;';
+            }
+            
+            mensajeDiv.textContent = texto;
+            mensajesDiv.appendChild(mensajeDiv);
+            mensajesDiv.scrollTop = mensajesDiv.scrollHeight;
+        }
+
+        function obtenerRespuesta(texto) {
+            const respuestas = {
+                'hola': '¡Hola! ¿Cómo estás? 😊',
+                'ayuda': 'Puedo ayudarte con información sobre parches, crear nuevos parches, o resolver dudas sobre Parcha2.',
+                'crear parche': 'Para crear un parche, haz clic en "✨ Crear" en la navegación.',
+                'mis parches': 'Estás en la sección de Mis Parches. Aquí ves todos los parches a los que te has unido.',
+                'explorar': 'En Explorar puedes descubrir nuevos parches y unirte a ellos.',
+                'gracias': '¡De nada! Estoy aquí para ayudarte 😊',
+                'ok': 'Perfecto, ¿algo más que necesites?',
+            };
+
+            for (let [palabra, respuesta] of Object.entries(respuestas)) {
+                if (texto.includes(palabra)) return respuesta;
+            }
+            
+            return 'Interesante... No estoy seguro de cómo responder a eso. ¿Puedo ayudarte con algo más?';
+        }
+    </script>
 
 </body>
 
