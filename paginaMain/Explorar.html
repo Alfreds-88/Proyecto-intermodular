@@ -583,15 +583,13 @@ body.dark-mode .dark-mode-btn {
     </div>
   </div>
 
-  <div class="container">
-
-   <div class="d-flex gap-3 mb-4 flex-wrap align-items-center justify-content-center justify-content-md-between">
-    <input type="search" class="form-control" placeholder="🔍 Buscar por nombre..." style="max-width: 500px;">
+<div class="d-flex gap-3 mb-4 flex-wrap align-items-center justify-content-center justify-content-md-between">
+    <input id="buscador" type="search" class="form-control" placeholder="🔍 Buscar por nombre..." style="max-width: 500px;">
     <div class="d-flex gap-2 flex-wrap">
-        <a href="#" class="category-pill active">Todas</a>
-        <a href="#" class="category-pill">Deportes</a>
-        <a href="#" class="category-pill">Social</a>
-        <a href="#" class="category-pill">Cultura</a>
+        <a href="#" class="category-pill active" onclick="cambiarCategoria('todas', this); return false;">Todas</a>
+        <a href="#" class="category-pill" onclick="cambiarCategoria('deportes', this); return false;">Deportes</a>
+        <a href="#" class="category-pill" onclick="cambiarCategoria('social', this); return false;">Social</a>
+        <a href="#" class="category-pill" onclick="cambiarCategoria('cultura', this); return false;">Cultura</a>
     </div>
 </div>
 
@@ -678,9 +676,23 @@ body.dark-mode .dark-mode-btn {
         </div>
       </div>
 
+      <div class="col-md-4 parche-item" data-id="Jetski-SanJuan">
+                <div class="card card-parche shadow-sm h-100">
+                    <img src="/imagenes/pexels-paul-35767037.jpg" class="card-img-top"
+                        style="height:160px;object-fit:cover;border-radius:14px 14px 0 0;" alt="Bicicleta">
+                    <div class="card-body">
+                        <span class="badge-cat mb-2 d-inline-block">Deportes</span>
+                        <h6 class="fw-bold">Jetski en San Juan</h6>
+                        <p class="text-muted small mb-1">Disfruta del agua y la aventura en un Jetski. Rutas emocionantes por el mar.</p>
+                        <p class="text-muted small mb-1">📍 Playa de San Juan</p>
+                        <p class="text-muted small mb-1">📅 Sábado 5 Oct · <strong>10:00 – 16:00</strong></p>
+                        <p class="text-muted small">👥 10/15 parcherxs · <em>María T.</em></p>
+                        <a href="#" class="btn btn-purple btn-sm px-3 mt-2">Ver detalles</a>
+                        <a href="#" class="btn-delete btn btn-sm px-3 mt-2 mx-2" onclick="eliminarParche('Jetski-SanJuan'); return false;">Eliminar</a>
+                    </div>
+                </div>
+            </div>
     </div>
-  </div>
-
 
   <footer class="bg-white border-top py-4 text-center">
     <p class="fw-bold gradient-text mb-3">Parcha2</p>
@@ -700,34 +712,63 @@ body.dark-mode .dark-mode-btn {
     function mostrarCrear() {
         document.getElementById('modalCrear').style.display = 'block';
     }
-
     function cerrarCrear() {
         document.getElementById('modalCrear').style.display = 'none';
     }
 
-    const darkModeBtn = document.getElementById('darkModeBtn');
+    let categoriaActual = 'todas';
 
-    if (localStorage.getItem('modoOscuro') === 'activo') {
-        document.body.classList.add('dark-mode');
-        darkModeBtn.textContent = '☀️';
+    function cambiarCategoria(cat, enlace) {
+        categoriaActual = cat;
+        document.querySelectorAll('.category-pill').forEach(a => a.classList.remove('active'));
+        enlace.classList.add('active');
+        aplicarFiltros();
     }
 
-    darkModeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
+    function aplicarFiltros() {
+        const textoBusqueda = document.getElementById('buscador').value.toLowerCase().trim();
+        let visibles = 0;
 
-        if (document.body.classList.contains('dark-mode')) {
-            localStorage.setItem('modoOscuro', 'activo');
-            darkModeBtn.textContent = '☀️';
+        document.querySelectorAll('.row.g-4 .col-md-4').forEach(col => {
+            const cat = col.getAttribute('data-categoria') || '';
+            const titulo = col.querySelector('h6') ? col.querySelector('h6').textContent.toLowerCase() : '';
+
+            const pasaCategoria = categoriaActual === 'todas' || cat === categoriaActual;
+            const pasaTexto = textoBusqueda === '' || titulo.includes(textoBusqueda);
+
+            if (pasaCategoria && pasaTexto) {
+                col.style.display = '';
+                visibles++;
+            } else {
+                col.style.display = 'none';
+            }
+        });
+
+        const contenedor = document.querySelector('.row.g-4.mb-5');
+        const yaHayMensaje = document.getElementById('msg-sin-resultados');
+        if (visibles === 0) {
+            if (!yaHayMensaje) {
+                const msg = document.createElement('div');
+                msg.id = 'msg-sin-resultados';
+                msg.className = 'col-12 text-center py-5';
+                msg.innerHTML = `
+                    <div style="font-size:48px; margin-bottom:16px;">🔍</div>
+                    <h3 style="color:#6B7280; margin-bottom:8px;">No se encontraron parches</h3>
+                    <p style="color:#9CA3AF;">Prueba con otra búsqueda o categoría.</p>
+                `;
+                contenedor.appendChild(msg);
+            }
         } else {
-            localStorage.setItem('modoOscuro', 'inactivo');
-            darkModeBtn.textContent = '🌙';
+            if (yaHayMensaje) yaHayMensaje.remove();
         }
-    });
+    }
 
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
+        document.getElementById('buscador').addEventListener('input', aplicarFiltros);
+
         const parchesAñadidos = JSON.parse(localStorage.getItem('parchesAñadidos')) || [];
         parchesAñadidos.forEach(id => {
-            const btn = document.querySelector(`[data-id="${id}"]`);
+            const btn = document.querySelector(`.btn-unirse[data-id="${id}"]`);
             if (btn) {
                 btn.classList.add('btn-añadido');
                 btn.classList.remove('btn-purple');
