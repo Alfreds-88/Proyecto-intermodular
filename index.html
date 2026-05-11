@@ -259,6 +259,9 @@ loginForm.addEventListener('submit', (e) => {
         return;
     }
 
+    // Limpiar parches agregados al iniciar sesión
+    localStorage.removeItem('parchesAñadidos');
+    
     window.location.href = './Pagina mis Parches/MisParches.html';
 });
 

@@ -360,21 +360,38 @@
 
 <body>
     
-
-    <!-- Botón de toggle tema -->
     <button id="theme-toggle-btn" onclick="toggleTheme()" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-size: 1rem; padding: 6px 9px; border: 1px solid #ccc; border-radius: 50%; background: rgba(255,255,255,0.95); cursor: pointer; transition: all 0.3s; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">🌙</button>
 
-   <nav class="navbar bg-white shadow-sm px-4 py-2">
-    <div class="container-fluid d-flex justify-content-center justify-content-md-between align-items-center flex-column flex-md-row gap-3 gap-md-0">
-        <span class="fw-bold fs-5 gradient-text mb-2 mb-md-0">Parcha2</span>
-        <div class="nav-pill-custom mb-2 mb-md-0">
+ <nav class="navbar bg-white shadow-sm px-4 py-2">
+    <div class="container-fluid d-none d-md-grid align-items-center"
+         style="grid-template-columns: 1fr auto 1fr;">
+        
+        <span class="fw-bold fs-5 gradient-text">Parcha2</span>
+
+        <div class="d-flex justify-content-center">
+            <div class="nav-pill-custom">
+                <a href="/paginaMain/Explorar.html">🔍 Explorar</a>
+                <a href="#" onclick="mostrarCrear(); return false;">✨ Crear</a>
+                <a href="#" class="active">📋 Mis Parches</a>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-end gap-2">
+            <span class="fw-semibold">Usuario</span>
+            <a href="../index.html" class="btn btn-purple btn-sm px-3">Cerrar sesión</a>
+        </div>
+    </div>
+
+    <div class="d-flex d-md-none flex-column align-items-center gap-3 w-100">
+        <span class="fw-bold fs-5 gradient-text">Parcha2</span>
+        <div class="nav-pill-custom">
             <a href="/paginaMain/Explorar.html">🔍 Explorar</a>
             <a href="#" onclick="mostrarCrear(); return false;">✨ Crear</a>
             <a href="#" class="active">📋 Mis Parches</a>
         </div>
-        <div class="d-flex align-items-center gap-3 gap-md-0">
-            <span class="fw-semibold p-lg-2">Usuario</span>
-            <a href="../index.html" class="btn btn-purple btn-sm px-lg-2">Cerrar sesión</a>
+        <div class="d-flex align-items-center gap-2">
+            <span class="fw-semibold">Usuario</span>
+            <a href="../index.html" class="btn btn-purple btn-sm px-3">Cerrar sesión</a>
         </div>
     </div>
 </nav>
@@ -388,13 +405,13 @@
 
     <div class="container">
         
-        <div class="d-flex gap-3 mb-4 flex-wrap align-items-center justify-content-center justify-content-md-between">
-            <input type="search" class="form-control" placeholder="🔍 Buscar por nombre..." style="max-width: 500px;">
-            <div class="nav-pill-custom">
-                <a href="#" class="active">Activos</a>
-                <a href="#">Pasados</a>
-            </div>
-        </div>
+       <div class="d-flex gap-3 mb-4 flex-wrap align-items-center justify-content-center justify-content-md-between">
+    <input id="buscador" type="search" class="form-control" placeholder="🔍 Buscar por nombre..." style="max-width: 500px;">
+    <div class="nav-pill-custom">
+        <a href="#" id="filtro-activos" class="active" onclick="cambiarFiltro('activos', this); return false;">Activos</a>
+        <a href="#" id="filtro-pasados" onclick="cambiarFiltro('pasados', this); return false;">Pasados</a>
+    </div>
+</div>
 
         <div class="row g-4 mb-5" id="contendorParches">
 
@@ -482,10 +499,15 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-
+    
+    <div class="col-md-4 parche-item" data-id="futbol-5-parque" data-fecha="2026-10-05">
+    <div class="col-md-4 parche-item" data-id="cafe-charla"       data-fecha="2026-10-04">
+    <div class="col-md-4 parche-item" data-id="senderismo-tablazo" data-fecha="2025-10-06">
+    <div class="col-md-4 parche-item" data-id="voluntariado-animales" data-fecha="2025-10-06">
+    <div class="col-md-4 parche-item" data-id="ciclopaseo-nocturno"   data-fecha="2025-10-04">
+    
     <footer class="bg-white border-top py-4 text-center">
         <p class="fw-bold gradient-text mb-1">Parcha2</p>
         <p class="text-muted small mb-3">Conectando personas a través de experiencias compartidas</p>
@@ -596,53 +618,120 @@
         document.getElementById('modalCrear').style.display = 'none';
     }
 
-    const darkModeBtn = document.getElementById('darkModeBtn');
+    // Fechas de referencia para activos/pasados
+    // Cada parche tiene su fecha real en data-fecha (formato YYYY-MM-DD)
+    // Si no hay fecha, se considera activo por defecto
 
-    darkModeBtn.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
+    let filtroActual = 'activos';
 
-        if (document.body.classList.contains('dark-mode')) {
-            darkModeBtn.textContent = '☀️';
-        } else {
-            darkModeBtn.textContent = '🌙';
-        }
-    });
+    function cambiarFiltro(filtro, enlace) {
+        filtroActual = filtro;
 
-    // Función para eliminar un parche
-    function eliminarParche(parchId) {
-        let parchesAñadidos = JSON.parse(localStorage.getItem('parchesAñadidos')) || [];
-        
-        // Eliminar el ID del array
-        parchesAñadidos = parchesAñadidos.filter(id => id !== parchId);
-        
-        // Actualizar localStorage
-        localStorage.setItem('parchesAñadidos', JSON.stringify(parchesAñadidos));
-        
-        // Ocultar el parche del DOM
-        const parchItem = document.querySelector(`[data-id="${parchId}"]`);
-        if (parchItem) {
-            parchItem.classList.add('parche-oculto');
-        }
-        
-        // Actualizar el contador
-        document.getElementById('contador-parches').textContent = parchesAñadidos.length;
+        // Actualizar clase active en las pills
+        document.querySelectorAll('.nav-pill-custom a[id^="filtro-"]').forEach(a => a.classList.remove('active'));
+        enlace.classList.add('active');
+
+        aplicarFiltros();
     }
 
-        window.addEventListener('load', function() {
-            const parchesAñadidos = JSON.parse(localStorage.getItem('parchesAñadidos')) || [];
-            const contenedor = document.getElementById('contendorParches');
-            const items = contenedor.querySelectorAll('.parche-item');
+    function aplicarFiltros() {
+        const textoBusqueda = document.getElementById('buscador').value.toLowerCase().trim();
+        const parchesAñadidos = JSON.parse(localStorage.getItem('parchesAñadidos')) || [];
+        const hoy = new Date();
+        hoy.setHours(0, 0, 0, 0);
 
-            items.forEach(item => {
-                const parchId = item.getAttribute('data-id');
-                if (!parchesAñadidos.includes(parchId)) {
-                    item.classList.add('parche-oculto');
+        let visibles = 0;
+
+        document.querySelectorAll('.parche-item').forEach(item => {
+            const id = item.getAttribute('data-id');
+
+            // Solo mostrar parches que el usuario haya añadido
+            if (!parchesAñadidos.includes(id)) {
+                item.classList.add('parche-oculto');
+                return;
+            }
+
+            // Filtro activos/pasados por data-fecha
+            const fechaStr = item.getAttribute('data-fecha');
+            let pasaFiltroFecha = true;
+            if (fechaStr) {
+                const fechaParche = new Date(fechaStr);
+                fechaParche.setHours(0, 0, 0, 0);
+                if (filtroActual === 'activos') {
+                    pasaFiltroFecha = fechaParche >= hoy;
+                } else {
+                    pasaFiltroFecha = fechaParche < hoy;
                 }
-            });
+            }
 
-            document.getElementById('contador-parches').textContent = parchesAñadidos.length;
+            // Filtro por nombre
+            const titulo = item.querySelector('h6') ? item.querySelector('h6').textContent.toLowerCase() : '';
+            const pasaFiltroTexto = textoBusqueda === '' || titulo.includes(textoBusqueda);
+
+            if (pasaFiltroFecha && pasaFiltroTexto) {
+                item.classList.remove('parche-oculto');
+                visibles++;
+            } else {
+                item.classList.add('parche-oculto');
+            }
         });
-    </script>
+
+        document.getElementById('contador-parches').textContent = visibles;
+
+        // Mostrar mensaje si no hay resultados
+        const contenedor = document.getElementById('contendorParches');
+        const yaHayMensaje = document.getElementById('msg-sin-resultados');
+        if (visibles === 0 && parchesAñadidos.length > 0) {
+            if (!yaHayMensaje) {
+                const msg = document.createElement('div');
+                msg.id = 'msg-sin-resultados';
+                msg.style.cssText = 'width:100%; text-align:center; padding:60px 20px;';
+                msg.innerHTML = `
+                    <div style="font-size:48px; margin-bottom:16px;">🔍</div>
+                    <h3 style="color:#6B7280; margin-bottom:8px;">No se encontraron parches</h3>
+                    <p style="color:#9CA3AF;">Prueba con otro nombre o cambia el filtro.</p>
+                `;
+                contenedor.appendChild(msg);
+            }
+        } else {
+            if (yaHayMensaje) yaHayMensaje.remove();
+        }
+    }
+
+    function eliminarParche(parchId) {
+        let parchesAñadidos = JSON.parse(localStorage.getItem('parchesAñadidos')) || [];
+        parchesAñadidos = parchesAñadidos.filter(id => id !== parchId);
+        localStorage.setItem('parchesAñadidos', JSON.stringify(parchesAñadidos));
+
+        const parchItem = document.querySelector(`[data-id="${parchId}"]`);
+        if (parchItem) parchItem.classList.add('parche-oculto');
+
+        aplicarFiltros();
+    }
+
+    window.addEventListener('load', function () {
+        const parchesAñadidos = JSON.parse(localStorage.getItem('parchesAñadidos')) || [];
+        const contenedor = document.getElementById('contendorParches');
+
+        if (parchesAñadidos.length === 0) {
+            contenedor.innerHTML = `
+                <div style="width:100%; text-align:center; padding:60px 20px;">
+                    <div style="font-size:64px; margin-bottom:20px;">📦</div>
+                    <h3 style="color:#6B7280; margin-bottom:10px;">Aún no has agregado parches</h3>
+                    <p style="color:#9CA3AF; margin-bottom:30px;">Dirígete a la sección <strong>Explorar</strong> para descubrir y agregar parches a tu lista.</p>
+                    <a href="../paginaMain/Explorar.html" class="btn btn-primary" style="background:linear-gradient(135deg,#6366F1,#A78BFA); border:none; color:white; padding:12px 30px; border-radius:8px; text-decoration:none; display:inline-block;">🔍 Ir a Explorar</a>
+                </div>
+            `;
+            document.getElementById('contador-parches').textContent = '0';
+            return;
+        }
+
+        aplicarFiltros();
+
+        // Buscador en tiempo real
+        document.getElementById('buscador').addEventListener('input', aplicarFiltros);
+    });
+</script>
 
     <button onclick="abrirChat()" style="position:fixed; bottom:20px; left:20px; width:40px; height:40px; border-radius:50%; background: #6366F1; color:white; border:none; font-size:20px; cursor:pointer; box-shadow:0 4px 12px rgba(99, 102, 241, 0.4); z-index:998; display:flex; align-items:center; justify-content:center;">
         💬
